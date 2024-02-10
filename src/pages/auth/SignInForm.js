@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -16,9 +16,11 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 
 import axios from 'axios';
+import { SetCurrentUserContext } from "../../App";
 
 
 function SignInForm() {
+    const setCurrentUser = useContext(SetCurrentUserContext);
 
     // destructure the use state below, useState hook for signInData:
     const [signInData, setSignInData] = useState({
@@ -45,7 +47,8 @@ function SignInForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("/dj-rest-auth/login/", signInData);
+            const {data} = await axios.post("/dj-rest-auth/login/", signInData);
+            setCurrentUser(data.user)
             history.push("/");
         } catch (err) {
             setErrors(err.response?.data);
