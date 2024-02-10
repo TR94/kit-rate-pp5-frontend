@@ -2,11 +2,12 @@ import React from 'react'
 import { Navbar, Container, Nav} from "react-bootstrap"
 import { NavLink } from "react-router-dom"
 import logo from "../assets/kitrate_logo.png"
+import styles from "../styles/NavBar.module.css"
 
 const NavBar = () => {
   return (
     // Based on React-Bootstrap NavBar component
-        <Navbar expand="md" fixed="top">
+        <Navbar className={styles.NavBar} expand="md" fixed="top">
             <Container>
                 <NavLink to="/">
                     <Navbar.Brand>
