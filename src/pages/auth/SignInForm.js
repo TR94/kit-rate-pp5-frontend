@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -16,11 +16,11 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 
 import axios from 'axios';
-import { SetCurrentUserContext } from "../../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 
 function SignInForm() {
-    const setCurrentUser = useContext(SetCurrentUserContext);
+    const setCurrentUser = useSetCurrentUser()
 
     // destructure the use state below, useState hook for signInData:
     const [signInData, setSignInData] = useState({

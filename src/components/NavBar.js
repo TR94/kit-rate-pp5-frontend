@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Navbar, Container, Nav} from "react-bootstrap"
 import { NavLink } from "react-router-dom"
 import logo from "../assets/kitrate_logo.png"
 import styles from "../styles/NavBar.module.css"
-import { CurrentUserContext } from '../App'
+import { useCurrentUser } from '../contexts/CurrentUserContext'
 
 const NavBar = () => {
-    const currentUser = useContext(CurrentUserContext)
+    const currentUser = useCurrentUser()
     const loggedInIcons = <>{currentUser?.username}</>
     const loggedOutIcons = <>
         <NavLink to="/signin"><i className='fas fa-sign-in-alt'></i>Sign-In</NavLink>
