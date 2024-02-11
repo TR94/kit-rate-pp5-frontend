@@ -85,6 +85,12 @@ function ProductCreateForm() {
         />
       </Form.Group>
 
+      {errors.title?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
       <Form.Group>
         <Form.Label>Category</Form.Label>
         <Form.Control
@@ -95,6 +101,12 @@ function ProductCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+
+      {errors.category?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -107,6 +119,12 @@ function ProductCreateForm() {
         />
       </Form.Group>
 
+      {errors.description?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
       <Form.Group>
         <Form.Label>Rating</Form.Label>
         <Form.Control
@@ -117,6 +135,12 @@ function ProductCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+
+      {errors.rating?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
     </div>
   );
 
@@ -132,6 +156,12 @@ function ProductCreateForm() {
             onChange={handleChange}
           />
         </Form.Group>
+
+        {errors.review?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
       
       <Button 
         className={`${btnStyles.Button} ${btnStyles.Blue}`} 
@@ -141,7 +171,7 @@ function ProductCreateForm() {
       </Button>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>

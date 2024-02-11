@@ -15,6 +15,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "^4.0.3",
+    "react-simple-star-rating": "^5.1.7",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -43,8 +44,8 @@
     ]
   },
   "devDependencies": {
-    "msw": "^0.35.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "msw": "^0.35.0"
   },
   "engines": {
     "node": "16.19.1",
