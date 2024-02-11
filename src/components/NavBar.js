@@ -6,10 +6,14 @@ import styles from "../styles/NavBar.module.css"
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
 import Avatar from './Avatar'
 import axios from 'axios'
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+
+    // custom hook to make the mobile navbar (burger menu) automatically collapse on clicking
+    const {expanded, setExpanded, ref} = useClickOutsideToggle()
 
     const addProductIcon = (
         <NavLink to="/products/create"><i className='far fa-plus-square'></i>Add Product</NavLink>
@@ -44,7 +48,11 @@ const NavBar = () => {
 
   return (
     // Based on React-Bootstrap NavBar component
-        <Navbar className={styles.NavBar} expand="md" fixed="top">
+        <Navbar 
+            expanded={expanded}    
+            className={styles.NavBar} 
+            expand="md" 
+            fixed="top">
             <Container>
                 <NavLink to="/">
                     <Navbar.Brand>
@@ -53,7 +61,11 @@ const NavBar = () => {
                     </Navbar.Brand>
                 </NavLink>
                 {currentUser && addProductIcon}
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle 
+                    ref={ref} 
+                    onClick={() => setExpanded(!expanded)}
+                    aria-controls="basic-navbar-nav" 
+                />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto text-right">
                         <NavLink exact to="/"><i className='fas fa-home'></i>Home</NavLink>
