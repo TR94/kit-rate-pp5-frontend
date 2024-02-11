@@ -37,7 +37,7 @@ const NavBar = () => {
         ><i className='fas fa-sign-out-alt'></i>Sign-Out</NavLink>
         <NavLink 
             to={`/profiles/${currentUser?.profile_id}`}
-        ><Avatar src={currentUser?.profile_image} text={currentUser?.profile_username} height={40}/></NavLink>
+        ><Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40}/></NavLink>
         {/* fix the profile_username - see issue in project board */}
     </>
 

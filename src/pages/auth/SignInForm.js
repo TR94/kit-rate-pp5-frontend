@@ -62,53 +62,53 @@ function SignInForm() {
           <h1 className={styles.Header}>sign in</h1>
           {/* Form based on react-bootstrap model */}
           <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="username">
-                            <Form.Label className="d-none">Username</Form.Label>
-                            <Form.Control
-                                className={styles.Input}
-                                type="text"
-                                placeholder="Username"
-                                name='username'
-                                value={username}
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
+            <Form.Group controlId="username">
+              <Form.Label className="d-none">Username</Form.Label>
+              <Form.Control
+                className={styles.Input}
+                type="text"
+                placeholder="Username"
+                name='username'
+                value={username}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-                        {errors.username?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
-                        ))}
+            {errors.username?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
-                        <Form.Group controlId="password">
-                            <Form.Label className="d-none">Password</Form.Label>
-                            <Form.Control
-                                className={styles.Input}
-                                type="password"
-                                placeholder="Password"
-                                name="password"
-                                value={password}
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label className="d-none">Password</Form.Label>
+              <Form.Control
+                className={styles.Input}
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-                        {errors.password1?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
-                        ))}
+            {errors.password1?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
-                        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
-                            Sign-Up
-                        </Button>
+            <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
+              Sign-Up
+            </Button>
 
-                        {errors.non_field_errors?.map((message, idx) => (
-                            <Alert variant="warning" key={idx} className="mt-3">
-                                {message}
-                            </Alert>
-                        ))}
+            {errors.non_field_errors?.map((message, idx) => (
+              <Alert variant="warning" key={idx} className="mt-3">
+                {message}
+              </Alert>
+            ))}
 
-                    </Form>
+          </Form>
 
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
