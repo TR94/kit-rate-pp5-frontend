@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import AsyncSelect from 'react-select/async';
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -16,6 +17,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "../../styles/ProductCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import axios from "axios";
 
 function ProductCreateForm() {
 
@@ -30,6 +32,9 @@ function ProductCreateForm() {
     review: "",
   });
 
+  const [inputValue, setInputValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(null);
+
   const { title, category, description, rating, image, review } = productData;
 
   const imageInput = useRef(null)
@@ -41,6 +46,21 @@ function ProductCreateForm() {
       [event.target.name]: event.target.value,
     });
   };
+
+  // drop down prop 
+  const handleInputChange = (value)=> {
+    setInputValue(value);
+  }
+  const handleSelectedValueChange = (value) => {
+    setSelectedValue(value);
+  }
+  const fetchCategories = () => {
+    // fix this to fetch the categories from the API
+    return axiosReq.get('/categories').then(result => {
+      const cat = result.data.data;
+      return cat
+    });
+  }
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
@@ -93,13 +113,15 @@ function ProductCreateForm() {
 
       <Form.Group>
         <Form.Label>Category</Form.Label>
-        <Form.Control
-          as="text"
-          rows={6}
-          name="category"
-          value={category}
-          onChange={handleChange}
-        />
+        <AsyncSelect
+        cacheOptions
+        defaultOptions
+        value={selectedValue}
+        getOptionLabel={e => e.category}
+        loadOptions={fetchCategories}
+        onInputChange={handleInputChange}
+        onChange={handleSelectedValueChange}
+      />
       </Form.Group>
 
       {errors.category?.map((message, idx) => (
