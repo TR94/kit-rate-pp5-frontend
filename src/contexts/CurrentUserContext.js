@@ -11,7 +11,6 @@ export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 
-
 // Reusable custom hook to check current user when a component mounts
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);

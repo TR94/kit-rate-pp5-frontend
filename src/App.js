@@ -8,15 +8,32 @@ import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import ProductCreateForm from './pages/products/ProductCreateForm';
 import ProductPage from './pages/products/ProductPage';
+import ProductsPage from './pages/products/ProductsPage';
+import { useCurrentUser } from './contexts/CurrentUserContext';
 
 function App() {
+
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || ""
 
   return (
         <div className={styles.App}>
           <NavBar />
           <Container className={styles.Main}>
             <Switch>
-              <Route exact path="/" render={() => <h1>Home Page</h1>} />
+              <Route exact path="/" render={() => <ProductsPage message="No results found. Adjust the search keyword"/>} />
+              <Route exact path="/feed" render={() => (
+                <ProductsPage 
+                message="No results found. Adjust the search keyword or follow a category"
+                filter= {`owner__subscribed__owner__profile=${profile_id}&`}
+                />
+              )}/>
+              <Route exact path="/favourites" render={() => (
+                <ProductsPage 
+                message="No results found. Adjust the search keyword or favourite a product"
+                filter={`favourites__owner__profile=${profile_id}&ordering=-favourites__created_at&`}
+                />
+              )}/>
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/products/create" render={() => <ProductCreateForm />} />

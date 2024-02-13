@@ -15,7 +15,6 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "^4.0.3",
-    "react-simple-star-rating": "^5.1.7",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

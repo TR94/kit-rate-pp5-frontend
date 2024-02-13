@@ -22,7 +22,7 @@ const Product = (props) => {
         category,
         average_rating,
         productPage,
-        setProduct,
+        setProducts,
     } = props;
 
     const currentUser = useCurrentUser();
@@ -31,7 +31,7 @@ const Product = (props) => {
     const handleLike = async () => {
         try {
             const { data } = await axiosRes.post("/favourites/", { product: id });
-            setProduct((prevProducts) => ({
+            setProducts((prevProducts) => ({
                 ...prevProducts,
                 results: prevProducts.results.map((product) => {
                     return product.id === id
@@ -47,7 +47,7 @@ const Product = (props) => {
     const handleUnlike = async () => {
         try {
             await axiosRes.delete(`/favourites/${favourite_id}/`);
-            setProduct((prevProducts) => ({
+            setProducts((prevProducts) => ({
                 ...prevProducts,
                 results: prevProducts.results.map((product) => {
                     return product.id === id
