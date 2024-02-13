@@ -31,7 +31,14 @@ function PostsPage({ message, filter = "" }) {
             }
         }
         setHasLoaded(false)
-        fetchPosts()
+        // timer to reduce amount of API requests in searchbar - waits 1 sec before making request
+        const timer = setTimeout(() => {
+            fetchPosts();
+        }, 1000)
+        return () => {
+            clearTimeout(timer)
+        }
+
     },[filter, query, pathname])
 
     return (
