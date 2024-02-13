@@ -31,7 +31,7 @@ function App() {
               <Route exact path="/favourites" render={() => (
                 <ProductsPage 
                 message="No results found. Adjust the search keyword or favourite a product"
-                filter={`favourites__owner=${profile_id}&`}
+                filter={`favourites__owner=${profile_id}&ordering=-favourites__created_at`}
                 />
               )}/>
               <Route exact path="/signin" render={() => <SignInForm />} />

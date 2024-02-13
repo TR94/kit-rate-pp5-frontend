@@ -12,6 +12,8 @@ import Product from "./Product";
 
 import NoResults from "../../assets/no-results.png";
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function PostsPage({ message, filter = "" }) {
 
@@ -62,9 +64,18 @@ function PostsPage({ message, filter = "" }) {
                 {hasLoaded ? (
                     <>
                         {products.results.length ? (
-                            products.results.map(product => (
-                                <Product key={product.id} {...product} setProducts={setProducts}/>
-                            ))
+                            <InfiniteScroll 
+                                children = {
+                                    products.results.map(product => (
+                                        <Product key={product.id} {...product} setProducts={setProducts}/>
+                                    ))
+                                }
+                                dataLength={products.results.length}
+                                loader={<Asset spinner />}
+                                hasMore={!!products.next}
+                                next={fetchMoreData(products, setProducts)}
+                            />
+                            
                             ):
                                 <Container className={appStyles.Content}>
                                     <Asset src={NoResults} message={message}/>
