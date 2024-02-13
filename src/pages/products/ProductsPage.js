@@ -15,7 +15,7 @@ import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
-function PostsPage({ message, filter = "" }) {
+function ProductsPage({ message, filter = "" }) {
 
     const [products, setProducts] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -73,7 +73,7 @@ function PostsPage({ message, filter = "" }) {
                                 dataLength={products.results.length}
                                 loader={<Asset spinner />}
                                 hasMore={!!products.next}
-                                next={fetchMoreData(products, setProducts)}
+                                next={() => fetchMoreData(products, setProducts)}
                             />
                             
                             ):
@@ -95,4 +95,4 @@ function PostsPage({ message, filter = "" }) {
     );
 }
 
-export default PostsPage;
+export default ProductsPage;
