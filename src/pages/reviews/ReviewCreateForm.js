@@ -11,6 +11,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 function ReviewCreateForm(props) {
   const { product, setProduct, setReviews, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
+  const [rating, setRating] = useState("");
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -43,21 +44,31 @@ function ReviewCreateForm(props) {
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group>
-        <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profileImage} />
-          </Link>
-          <Form.Control
-            className={styles.Form}
-            placeholder="my review..."
-            as="textarea"
-            value={content}
-            onChange={handleChange}
-            rows={2}
-          />
-        </InputGroup>
-      </Form.Group>
+        <Form.Group>
+            <InputGroup>
+                <Link to={`/profiles/${profile_id}`}>
+                    <Avatar src={profileImage} />
+                </Link>
+                <Form.Group>
+                    <Form.Label>Rating</Form.Label>
+                    <Form.Control
+                        as="select"
+                        name="rating"
+                        value={rating}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+            </InputGroup>
+            <Form.Control
+                className={styles.Form}
+                placeholder="my review..."
+                as="textarea"
+                value={content}
+                onChange={handleChange}
+                rows={2}
+            />
+        </Form.Group>
+     
       <button
         className={`${styles.Button} btn d-block ml-auto`}
         disabled={!content.trim()}

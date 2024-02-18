@@ -10,6 +10,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Product from "./Product";
 import ReviewCreateForm from "../reviews/ReviewCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Review from "../reviews/Review";
 
 function ProductPage() {
   const { id } = useParams();
@@ -21,11 +22,12 @@ function ProductPage() {
   useEffect(() => {
     const handleMount = async () => {
         try {
-            const [{data:product}] = await Promise.all([
-                axiosReq.get(`/products/${id}`)
+            const [{data:product}, {data: reviews}] = await Promise.all([
+                axiosReq.get(`/products/${id}`),
+                axiosReq.get(`/reviews/?product=${id}`)
             ])
             setProduct({results: [product]})
-            console.log(product)
+            setReviews(reviews)
         } catch (err) {
             console.log(err)
         }
@@ -50,6 +52,14 @@ function ProductPage() {
           ) : reviews.results.length ? (
             "Reviews"
           ) : null}
+          {reviews.results.length ? (
+            reviews.results.map(review => (
+              <Review key={review.id} {...review} />
+            ))
+          ) : currentUser ? (
+            <span>No reviews yet, be the first to submit a review!</span>
+          ) : 
+            <span>No reviews...yet</span>}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
