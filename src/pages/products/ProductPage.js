@@ -54,7 +54,12 @@ function ProductPage() {
           ) : null}
           {reviews.results.length ? (
             reviews.results.map(review => (
-              <Review key={review.id} {...review} />
+              <Review 
+                key={review.id} 
+                {...review}
+                setProduct={setProduct}
+                setReviews={setReviews}  
+              />
             ))
           ) : currentUser ? (
             <span>No reviews yet, be the first to submit a review!</span>

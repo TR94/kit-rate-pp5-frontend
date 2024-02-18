@@ -32,7 +32,7 @@ function ReviewCreateForm(props) {
         results: [
           {
             ...prevProduct.results[0],
-            reviews_count: prevProduct.results[0].reviews_count + 1,
+            review_count: prevProduct.results[0].review_count + 1,
           },
         ],
       }));
