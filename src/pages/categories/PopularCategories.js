@@ -1,36 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
-import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Category from "./Categories";
+import { useCategoryData } from "../../contexts/CategoryDataContext";
 
 const PopularCategories = ({mobile}) => {
-  const [categoryData, setCategoryData] = useState({
-    popularCategories: { results: [] },
-  });
-  const { popularCategories } = categoryData;
-  const currentUser = useCurrentUser();
-
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get(
-            // ordering not working
-          "/categories/?ordering=-subscriptions_count"
-        );
-        setCategoryData((prevState) => ({
-          ...prevState,
-          popularCategories: data,
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    handleMount();
-  }, [currentUser]);
+  const { popularCategories } = useCategoryData();
 
   return (
     <Container className={`${appStyles.Content} ${mobile && 'd-lg-none text-center mb-3'}`}>
