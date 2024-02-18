@@ -8,13 +8,14 @@ import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+
 const Product = (props) => {
     const {
         id,
         owner,
         profile_id,
         profile_image,
-        reviews_count,
+        review_count,
         favourited_count,
         favourite_id,
         title,
@@ -125,7 +126,7 @@ const Product = (props) => {
                     <Link to={`/products/${id}`}>
                         <i className="far fa-comments" />
                     </Link>
-                    {reviews_count}
+                    {review_count}
                 </div>
             </Card.Body>
         </Card>
