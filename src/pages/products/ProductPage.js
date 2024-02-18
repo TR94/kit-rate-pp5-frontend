@@ -11,6 +11,9 @@ import Product from "./Product";
 import ReviewCreateForm from "../reviews/ReviewCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Review from "../reviews/Review";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Asset from "../../components/Asset";
+import { fetchMoreData } from "../../utils/utils";
 
 function ProductPage() {
   const { id } = useParams();
@@ -53,14 +56,20 @@ function ProductPage() {
             "Reviews"
           ) : null}
           {reviews.results.length ? (
-            reviews.results.map(review => (
-              <Review 
-                key={review.id} 
-                {...review}
-                setProduct={setProduct}
-                setReviews={setReviews}  
-              />
-            ))
+            <InfiniteScroll
+              children={reviews.results.map(review => (
+                <Review 
+                  key={review.id} 
+                  {...review}
+                  setProduct={setProduct}
+                  setReviews={setReviews}  
+                />
+              ))}
+              dataLength={reviews.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!reviews.next}
+              next={() => fetchMoreData(reviews, setReviews)}
+            />
           ) : currentUser ? (
             <span>No reviews yet, be the first to submit a review!</span>
           ) : 
