@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-import AsyncSelect from 'react-select/async';
+import React, { useState, useEffect, useRef } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -17,7 +16,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "../../styles/ProductCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import axios from "axios";
 
 function ProductCreateForm() {
 
@@ -32,13 +30,11 @@ function ProductCreateForm() {
     review: "",
   });
 
-  const [inputValue, setInputValue] = useState('');
-  const [selectedValue, setSelectedValue] = useState(null);
-
   const { title, category, description, rating, image, review } = productData;
 
   const imageInput = useRef(null)
   const history = useHistory()
+  const [currentCategories, setCurrentCategories] = useState({ results: []});
 
   const handleChange = (event) => {
     setProductData({
@@ -47,20 +43,18 @@ function ProductCreateForm() {
     });
   };
 
-  // drop down prop 
-  const handleInputChange = (value)=> {
-    setInputValue(value);
-  }
-  const handleSelectedValueChange = (value) => {
-    setSelectedValue(value);
-  }
-  const fetchCategories = () => {
-    // fix this to fetch the categories from the API
-    return axiosReq.get('/categories').then(result => {
-      const cat = result.data.data;
-      return cat
-    });
-  }
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const {data:category} = await axiosReq.get(`/categories`)
+        console.log(category)
+        setCurrentCategories({results: [category]})
+      } catch (err) {
+          console.log(err)
+      }
+    }
+    fetchCategories()
+  }, [])
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
@@ -111,17 +105,24 @@ function ProductCreateForm() {
               </Alert>
             ))}
 
-      <Form.Group>
+      <Form.Group controlId="category">
         <Form.Label>Category</Form.Label>
-        <AsyncSelect
-        cacheOptions
-        defaultOptions
-        value={selectedValue}
-        getOptionLabel={e => e.category}
-        loadOptions={fetchCategories}
-        onInputChange={handleInputChange}
-        onChange={handleSelectedValueChange}
-      />
+        <Form.Control
+          as="select"
+          name="catgory"
+          value={category}
+          onChange={handleChange}
+        >
+          <option value="">Select a category</option>
+          {currentCategories?.results?.map((selection) => {
+            const {id, category} = selection;
+            return (
+              <option key={id} value={category}>
+                {category}
+              </option>
+            )
+          })}
+        </Form.Control>
       </Form.Group>
 
       {errors.category?.map((message, idx) => (
