@@ -5,6 +5,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Product = (props) => {
     const {
@@ -27,6 +29,7 @@ const Product = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+    const history = useHistory();
 
     const handleLike = async () => {
         try {
@@ -60,6 +63,19 @@ const Product = (props) => {
         }
     };
 
+    const handleEdit = () => {
+        history.push(`/products/${id}/edit`);
+      };
+    
+    const handleDelete = async () => {
+    try {
+        await axiosRes.delete(`/products/${id}/`);
+        history.goBack();
+    } catch (err) {
+        console.log(err);
+    }
+    };
+
     return (
         <Card className={styles.Product}>
             <Card.Body>
@@ -70,7 +86,7 @@ const Product = (props) => {
                     </Link>
                     <div className="d-flex align-items-center">
                         <span>{average_rating}</span>
-                        {is_owner && productPage && "..."}
+                        {is_owner && productPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
                     </div>
                 </Media>
             </Card.Body>
