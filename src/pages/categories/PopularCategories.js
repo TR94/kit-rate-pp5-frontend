@@ -4,6 +4,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Category from "./Categories";
 
 const PopularCategories = ({mobile}) => {
   const [categoryData, setCategoryData] = useState({
@@ -39,12 +40,12 @@ const PopularCategories = ({mobile}) => {
           {mobile ? (
             <div className="d-flex justify-content-around">
                 {popularCategories.results.slice(0,3).map((category) => (
-                <p key={category.id}>{category.category}</p>
+                <Category key={category.id} category={category.category} mobile />
                 ))}
             </div>
           ):(
             popularCategories.results.map((category) => (
-            <p key={category.id}>{category.category}</p>
+                <Category key={category.id} category={category.category} />
             ))
           )}
         </>
