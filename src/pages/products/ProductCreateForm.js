@@ -34,6 +34,8 @@ function ProductCreateForm() {
 
   const imageInput = useRef(null)
   const history = useHistory()
+
+  // setting categories in the state
   const [currentCategories, setCurrentCategories] = useState({ results: []});
 
   const handleChange = (event) => {
@@ -43,18 +45,20 @@ function ProductCreateForm() {
     });
   };
 
+  // function to fetch the categories from the API
+  // request made when component mounts
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const {data:category} = await axiosReq.get(`/categories`)
-        console.log(category)
-        setCurrentCategories({results: [category]})
+        const {data : { results }} = await axiosReq.get(`/categories`)
+        setCurrentCategories(prevData => ({...prevData, results: [...results]}))
       } catch (err) {
           console.log(err)
       }
     }
     fetchCategories()
   }, [])
+
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
@@ -76,9 +80,10 @@ function ProductCreateForm() {
     formData.append("rating", rating);
     formData.append("image", imageInput.current.files[0]);
     formData.append("review",review);
-
+    console.log(formData)
     try {
       const { data } = await axiosReq.post("/products/", formData);
+      // can i send to multiple end points... ? or remove rating and first review lines from "add product"
       history.push(`/products/${data.id}`);
     } catch (err) {
       if (err.response?.status !== 401) {
@@ -96,6 +101,7 @@ function ProductCreateForm() {
           name="title"
           value={title}
           onChange={handleChange}
+          required
         />
       </Form.Group>
 
@@ -105,24 +111,26 @@ function ProductCreateForm() {
               </Alert>
             ))}
 
-      <Form.Group controlId="category">
+      <Form.Group 
+        // controlId="category"
+      >
         <Form.Label>Category</Form.Label>
-        <Form.Control
-          as="select"
-          name="catgory"
-          value={category}
-          onChange={handleChange}
+        <select 
+          aria-label="Choose a relevant category for this product"
+          name="category" 
+          onChange={handleChange} 
         >
+
           <option value="">Select a category</option>
           {currentCategories?.results?.map((selection) => {
             const {id, category} = selection;
             return (
-              <option key={id} value={category}>
+              <option key={id} value={id}>
                 {category}
               </option>
             )
           })}
-        </Form.Control>
+        </select>
       </Form.Group>
 
       {errors.category?.map((message, idx) => (
@@ -150,13 +158,29 @@ function ProductCreateForm() {
 
       <Form.Group>
         <Form.Label>Rating</Form.Label>
-        <Form.Control
+        {/* <Form.Control
           as="textarea"
           rows={2}
           name="rating"
           value={rating}
           onChange={handleChange}
-        />
+          required
+        /> */}
+        <select 
+          aria-label="Choose a rating for this product"
+          name="rating" 
+          value={rating}
+          onChange={handleChange} 
+          required 
+        >
+          <option>Rate this product</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </select>
+
       </Form.Group>
 
       {errors.rating?.map((message, idx) => (
@@ -177,6 +201,7 @@ function ProductCreateForm() {
             name="review"
             value={review}
             onChange={handleChange}
+            required
           />
         </Form.Group>
 

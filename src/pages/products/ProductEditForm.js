@@ -112,6 +112,7 @@ function ProductEditForm() {
           name="title"
           value={title}
           onChange={handleChange}
+          required
         />
       </Form.Group>
 
@@ -128,6 +129,7 @@ function ProductEditForm() {
           name="catgory"
           value={category}
           onChange={handleChange}
+          required
         >
           <option value="">Select a category</option>
           {currentCategories?.results?.map((selection) => {
@@ -176,6 +178,7 @@ function ProductEditForm() {
             name="review"
             value={review}
             onChange={handleChange}
+            required
           />
         </Form.Group>
 
