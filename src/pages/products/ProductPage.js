@@ -14,6 +14,8 @@ import Review from "../reviews/Review";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import { StarRating } from "../../components/StarRating";
+
 
 function ProductPage() {
   const { id } = useParams();
@@ -27,7 +29,7 @@ function ProductPage() {
         try {
             const [{data:product}, {data: reviews}] = await Promise.all([
                 axiosReq.get(`/products/${id}`),
-                axiosReq.get(`/reviews/?product=${id}`)
+                axiosReq.get(`/reviews/product/${id}`)
             ])
             setProduct({results: [product]})
             setReviews(reviews)
@@ -55,6 +57,8 @@ function ProductPage() {
           ) : reviews.results.length ? (
             "Reviews"
           ) : null}
+
+          <StarRating props/>
           {reviews.results.length ? (
             <InfiniteScroll
               children={reviews.results.map(review => (

@@ -72,17 +72,23 @@ function ProductCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
+    const formDataProduct = new FormData();
+    const formDataReview = new FormData();
 
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("rating", rating);
-    formData.append("image", imageInput.current.files[0]);
-    formData.append("review",review);
-    console.log(formData)
+    formDataProduct.append("title", title);
+    formDataProduct.append("description", description);
+    formDataProduct.append("category", category);
+    formDataProduct.append("image", imageInput.current.files[0]);
+
+    formDataReview.append("rating", rating);
+    formDataReview.append("content",review);
+
+    console.log(formDataProduct)
     try {
-      const { data } = await axiosReq.post("/products/", formData);
+      const { data } = await axiosReq.post("/products/", formDataProduct);
+      formDataReview.append("product", data.id)
+      const response = await axiosReq.post("/reviews/", formDataReview);
+      console.log(response.data)
       // can i send to multiple end points... ? or remove rating and first review lines from "add product"
       history.push(`/products/${data.id}`);
     } catch (err) {
