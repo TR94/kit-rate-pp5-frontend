@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { DisplayRating } from "../../components/DisplayRating";
 
 
 const Product = (props) => {
@@ -88,7 +89,7 @@ const Product = (props) => {
                         {owner}
                     </Link>
                     <div className="d-flex align-items-center">
-                        <span>{average_rating}</span>
+                        <span><DisplayRating avg_rating={average_rating} /></span>
                         {is_owner && productPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
                     </div>
                 </Media>

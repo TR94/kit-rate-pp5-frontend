@@ -58,7 +58,6 @@ function ProductPage() {
             "Reviews"
           ) : null}
 
-          <StarRating props/>
           {reviews.results.length ? (
             <InfiniteScroll
               children={reviews.results.map(review => (
