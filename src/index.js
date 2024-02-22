@@ -8,15 +8,13 @@ import { CurrentUserProvider } from './contexts/CurrentUserContext';
 import { CategoryDataProvider } from './contexts/CategoryDataContext';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Router>
       <CurrentUserProvider>
         <CategoryDataProvider>
           <App />
         </CategoryDataProvider>
       </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 

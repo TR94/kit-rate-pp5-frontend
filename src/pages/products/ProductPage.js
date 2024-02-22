@@ -27,7 +27,7 @@ function ProductPage() {
   useEffect(() => {
     const handleMount = async () => {
         try {
-            const [{data:product}, {data: reviews}] = await Promise.all([
+            const [{data:product}, {data:reviews}] = await Promise.all([
                 axiosReq.get(`/products/${id}`),
                 axiosReq.get(`/reviews/product/${id}`)
             ])

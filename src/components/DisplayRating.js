@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa"
 
-export function DisplayRating({avg_rating}) {
+export function DisplayRating({avg_rating=0}) {
 
     const handleRound = (avg_rating) => {
         const starValue = Math.round(avg_rating)
