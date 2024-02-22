@@ -13,9 +13,13 @@ function ReviewCreateForm(props) {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState("");
 
-  const handleChange = (event) => {
+  const handleContentChange = (event) => {
     setContent(event.target.value);
   };
+
+  const handleRatingChange = (event) => {
+    setRating(event.target.value);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,6 +27,7 @@ function ReviewCreateForm(props) {
       const { data } = await axiosRes.post("/reviews/", {
         content,
         product,
+        rating,
       });
       setReviews((prevReviews) => ({
         ...prevReviews,
@@ -37,6 +42,7 @@ function ReviewCreateForm(props) {
         ],
       }));
       setContent("");
+      setRating("");
     } catch (err) {
       console.log(err);
     }
@@ -50,13 +56,19 @@ function ReviewCreateForm(props) {
                     <Avatar src={profileImage} />
                 </Link>
                 <Form.Group>
-                    <Form.Label>Rating</Form.Label>
-                    <Form.Control
-                        as="select"
+                    <Form.Label>Rating: </Form.Label>
+                    <select
                         name="rating"
                         value={rating}
-                        onChange={handleChange}
-                    />
+                        onChange={handleRatingChange}
+                    >
+                      <option>Rate this product</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                      <option value="5">Five</option>
+                    </select>
                 </Form.Group>
             </InputGroup>
             <Form.Control
@@ -64,7 +76,7 @@ function ReviewCreateForm(props) {
                 placeholder="my review..."
                 as="textarea"
                 value={content}
-                onChange={handleChange}
+                onChange={handleContentChange}
                 rows={2}
             />
         </Form.Group>

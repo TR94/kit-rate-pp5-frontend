@@ -7,10 +7,20 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
 import ReviewEditForm from "./ReviewEditForm";
+import { DisplayRating } from "../../components/DisplayRating";
 
 const Review = (props) => {
-  const { profile_id, profile_image, owner, updated_at, 
-    content, rating, setProduct, setReviews, id } = props;
+  const { 
+    profile_id, 
+    profile_image, 
+    owner, 
+    updated_at, 
+    content, 
+    rating, 
+    setProduct, 
+    setReviews, 
+    id,
+  } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -45,11 +55,13 @@ const Review = (props) => {
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
           <span className={styles.Date}>{updated_at}</span>
+          <span><DisplayRating rating={rating} /></span>
           {showEditForm ? (
             <ReviewEditForm 
                 id={id}
                 profile_id={profile_id}
                 content={content}
+                rating={rating}
                 profileImage={profile_image}
                 setReviews={setReviews}
                 setShowEditForm={setShowEditForm}

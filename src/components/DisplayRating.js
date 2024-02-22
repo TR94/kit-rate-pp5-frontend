@@ -1,18 +1,12 @@
 import { FaStar } from "react-icons/fa"
 
-export function DisplayRating({avg_rating=0}) {
-
-    const handleRound = (avg_rating) => {
-        const starValue = Math.round(avg_rating)
-        console.log(starValue)
-        return starValue
-    }
-
+export function DisplayRating({rating=0}) {
+    console.log(rating)
   return (
     <div className='App'>
         
-      {[...Array(handleRound(avg_rating))].map(() => {
-        return <FaStar size={30} />
+      {[...Array(rating)].map(() => {
+        return <FaStar size={20} />
       })}
     </div>
   )
