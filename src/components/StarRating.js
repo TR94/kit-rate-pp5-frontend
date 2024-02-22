@@ -6,8 +6,11 @@ export default function StarRating() {
   const [rating, setRating] = useState(0) // initial rating value
 
   // Catch Rating value
-  const handleRating = (rate: number) => {
-    setRating(rate)
+  const handleRating = (rating) => {
+    const value = (rating/20)
+    setRating(value)
+    console.log(value)
+    return value
     // other logic
   }
 

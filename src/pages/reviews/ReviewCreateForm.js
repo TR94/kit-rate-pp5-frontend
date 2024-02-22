@@ -7,6 +7,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/ReviewForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import StarRating from "../../components/StarRating";
 
 function ReviewCreateForm(props) {
   const { product, setProduct, setReviews, profileImage, profile_id } = props;
@@ -57,7 +58,7 @@ function ReviewCreateForm(props) {
                 </Link>
                 <Form.Group>
                     <Form.Label>Rating: </Form.Label>
-                    <select
+                    {/* <select
                         name="rating"
                         value={rating}
                         onChange={handleRatingChange}
@@ -68,7 +69,8 @@ function ReviewCreateForm(props) {
                       <option value="3">Three</option>
                       <option value="4">Four</option>
                       <option value="5">Five</option>
-                    </select>
+                    </select> */}
+                    <StarRating rating />
                 </Form.Group>
             </InputGroup>
             <Form.Control
