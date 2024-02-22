@@ -4,6 +4,7 @@ import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import Category from "./Categories";
 import { useCategoryData } from "../../contexts/CategoryDataContext";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const PopularCategories = ({mobile}) => {
   const { popularCategories } = useCategoryData();
@@ -16,12 +17,16 @@ const PopularCategories = ({mobile}) => {
           {mobile ? (
             <div className="d-flex justify-content-around">
                 {popularCategories.results.slice(0,3).map((category) => (
-                <Category key={category.id} category={category.category} mobile />
+                <Link to={`/categories/${category.id}`}>
+                  <Category key={category.id} category={category.category} mobile />
+                </Link>
                 ))}
             </div>
           ):(
             popularCategories.results.map((category) => (
-                <Category key={category.id} category={category.category} />
+                <Link to={`/categories/${category.id}`}>
+                  <Category key={category.id} category={category.category} />
+                </Link>
             ))
           )}
         </>
