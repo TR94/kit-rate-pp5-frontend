@@ -24,6 +24,7 @@ const Product = (props) => {
         image,
         updated_at,
         category,
+        category_detail,
         average_rating,
         productPage,
         setProducts,
@@ -98,6 +99,9 @@ const Product = (props) => {
                 <Card.Img src={image} alt={title} />
             </Link>
             <Card.Body>
+                <Link to={`/categories/${category}`}>
+                    {category_detail && <Card.Title>{category_detail.category}</Card.Title>}
+                </Link>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {description && <Card.Text>{description}</Card.Text>}
                 <div className={styles.ProductBar}>

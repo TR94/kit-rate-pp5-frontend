@@ -70,7 +70,8 @@ function ReviewCreateForm(props) {
                       <option value="4">Four</option>
                       <option value="5">Five</option>
                     </select> */}
-                    <StarRating rating />
+                    <StarRating 
+                      onClick={handleRatingChange} ratingValue={rating} />
                 </Form.Group>
             </InputGroup>
             <Form.Control

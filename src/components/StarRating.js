@@ -6,12 +6,17 @@ export default function StarRating() {
   const [rating, setRating] = useState(0) // initial rating value
 
   // Catch Rating value
-  const handleRating = (rating) => {
-    const value = (rating/20)
+  // const handleRating = (rating) => {
+  //   const value = (rating/20)
+  //   setRating(value)
+  //   console.log(value)
+
+  const handleRating = (rate) => {
+    const value = (rate/20)  
+    // setRating doesn't appear to be working...???
     setRating(value)
-    console.log(value)
-    return value
-    // other logic
+    console.log("Value: " + value)
+    console.log("Rating: " + rating)
   }
 
   return (
