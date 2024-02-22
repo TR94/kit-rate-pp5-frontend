@@ -55,7 +55,7 @@ const Review = (props) => {
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
           <span className={styles.Date}>{updated_at}</span>
-          <span><DisplayRating rating={rating} /></span>
+          <span className={styles.Rating}><DisplayRating rating={rating} /></span>
           {showEditForm ? (
             <ReviewEditForm 
                 id={id}
