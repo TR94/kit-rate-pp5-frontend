@@ -18,17 +18,15 @@ import btnStyles from "../../styles/Button.module.css";
 function ProductEditForm() {
 
   const [errors, setErrors] = useState({});
-  
+
   const [productData, setProductData] = useState({
     title: "",
     category: "",
     description: "",
-    rating: "",
     image: "",
-    review: "",
   });
 
-  const { title, category, description, image, review } = productData;
+  const { title, category, description, image } = productData;
 
   const imageInput = useRef(null)
   const history = useHistory()
@@ -48,7 +46,7 @@ function ProductEditForm() {
     handleMount();
   }, [history, id]);
 
-  const [currentCategories, setCurrentCategories] = useState({ results: []});
+  const [currentCategories, setCurrentCategories] = useState({ results: [] });
 
   const handleChange = (event) => {
     setProductData({
@@ -60,11 +58,11 @@ function ProductEditForm() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const {data:category} = await axiosReq.get(`/categories`)
+        const { data: category } = await axiosReq.get(`/categories`)
         console.log(category)
-        setCurrentCategories({results: [category]})
+        setCurrentCategories({ results: [category] })
       } catch (err) {
-          console.log(err)
+        console.log(err)
       }
     }
     fetchCategories()
@@ -87,11 +85,10 @@ function ProductEditForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", category);
-    formData.append("review",review);
     if (imageInput?.current?.files[0]) {
-        formData.append("image", imageInput.current.files[0]);
-      }
-    
+      formData.append("image", imageInput.current.files[0]);
+    }
+
 
     try {
       await axiosReq.put(`/products/${id}`, formData);
@@ -117,37 +114,38 @@ function ProductEditForm() {
       </Form.Group>
 
       {errors.title?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
-      <Form.Group controlId="category">
+      <Form.Group 
+        // controlId="category"
+      >
         <Form.Label>Category</Form.Label>
-        <Form.Control
-          as="select"
-          name="catgory"
-          value={category}
-          onChange={handleChange}
-          required
+        <select 
+          aria-label="Choose a relevant category for this product"
+          name="category" 
+          onChange={handleChange} 
         >
+
           <option value="">Select a category</option>
           {currentCategories?.results?.map((selection) => {
             const {id, category} = selection;
             return (
-              <option key={id} value={category}>
+              <option key={id} value={id}>
                 {category}
               </option>
             )
           })}
-        </Form.Control>
+        </select>
       </Form.Group>
 
       {errors.category?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -161,35 +159,12 @@ function ProductEditForm() {
       </Form.Group>
 
       {errors.description?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-    </div>
-  );
-
-  const textFields2 = (
-    <div>
-      <Form.Group>
-          <Form.Label>First review</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={6}
-            name="review"
-            value={review}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        {errors.review?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-      
-      <Button 
-        className={`${btnStyles.Button} ${btnStyles.Blue}`} 
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue}`}
         type="submit"
       >
         save
@@ -201,7 +176,7 @@ function ProductEditForm() {
         cancel
       </Button>
     </div>
-  )
+  );
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -211,23 +186,23 @@ function ProductEditForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-                <figure>
+              <figure>
                 <Image className={appStyles.Image} src={image} rounded />
-                </figure>
-                <div>
+              </figure>
+              <div>
                 <Form.Label
-                    className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                    htmlFor="image-upload"
+                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  htmlFor="image-upload"
                 >
-                    Change the image
+                  Change the image
                 </Form.Label>
-                </div>
+              </div>
 
 
-              <Form.File 
-                id="image-upload" 
-                accept="image/*" 
-                onChange={handleChangeImage} 
+              <Form.File
+                id="image-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
                 ref={imageInput}
               />
 
@@ -237,11 +212,6 @@ function ProductEditForm() {
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields2}</Container>
         </Col>
       </Row>
     </Form>
