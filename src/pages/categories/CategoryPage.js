@@ -12,20 +12,40 @@ import btnStyles from "../../styles/Button.module.css";
 
 import PopularCategories from "./PopularCategories.js";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { axiosReq } from "../../api/axiosDefaults.js";
+import { useCategoryData, useSetCategoryData } from "../../contexts/CategoryDataContext.js";
+import { useParams } from "react-router-dom/cjs/react-router-dom.js";
 
 function CategoryPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
+  const {id} = useParams();
+  const setCategoryData = useSetCategoryData()
+  const {pageCategory} = useCategoryData();
+  const [category] = pageCategory.results
 
   useEffect(() => {
-      setHasLoaded(true);
-  }, [])
+      const fetchData = async () => {
+        try {
+          const [{data: pageCategory}] = await Promise.all([
+            axiosReq.get(`/categories/${id}/`)
+          ])
+          setCategoryData((prevState) => ({
+            ...prevState,
+            pageCategory: { results: [pageCategory] },
+          }));
+          setHasLoaded(true);
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      fetchData()
+  }, [id, setCategoryData]);
 
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
-          <p>Image</p>
         </Col>
         <Col lg={6}>
           <h3 className="m-2">Profile username</h3>

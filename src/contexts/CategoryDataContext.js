@@ -1,12 +1,12 @@
-import {axiosReq, axiosRes} from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from "./CurrentUserContext";
 // import { followHelper, unfollowHelper } from "../utils/utils";
 
 
 // creates context objects
-export const CategoryDataContext = createContext();
-export const SetCategoryDataContext = createContext();
+const CategoryDataContext = createContext();
+const SetCategoryDataContext = createContext();
 
 // creates the custom hooks for the context objects
 export const useCategoryData = () => useContext(CategoryDataContext);
@@ -92,9 +92,7 @@ export const CategoryDataProvider = ({ children }) => {
     // add to index.js
     return (
         <CategoryDataContext.Provider value={categoryData}>
-            <SetCategoryDataContext.Provider value={{setCategoryData, 
-                // handleSubscribe, handleUnsubscribe
-                }}>
+            <SetCategoryDataContext.Provider value={{setCategoryData}}>
             {children}
             </SetCategoryDataContext.Provider>
         </CategoryDataContext.Provider>
