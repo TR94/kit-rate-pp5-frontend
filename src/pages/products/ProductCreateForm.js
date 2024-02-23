@@ -10,6 +10,7 @@ import Image from "react-bootstrap/Image";
 
 import Upload from "../../assets/file_upload_icon.png";
 import Asset from "../../components/Asset";
+import { useRedirect } from "../../hooks/useRedirect";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -18,6 +19,9 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 function ProductCreateForm() {
+
+  // if user is loggedOut they will be directed away from the sign-in as its not needed
+  useRedirect('loggedOut')
 
   const [errors, setErrors] = useState({});
 

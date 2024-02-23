@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useRedirect } from "../../hooks/useRedirect";
 
 import styles from "../../styles/SignForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -19,6 +20,10 @@ import axios from "axios";
 
 
 const SignUpForm = () => {
+
+    // if user is loggedIn they will be directed away from the sign-in as its not needed
+    useRedirect('loggedIn')
+
     // destructure the use state below, useState hook for signUpData:
     const [signUpData, setSignUpData] = useState({
         username: "",

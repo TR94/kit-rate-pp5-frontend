@@ -17,10 +17,14 @@ import Container from "react-bootstrap/Container";
 
 import axios from 'axios';
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { useRedirect } from "../../hooks/useRedirect";
 
 
 function SignInForm() {
     const setCurrentUser = useSetCurrentUser()
+
+    // if user is loggedIn they will be directed away from the sign-in as its not needed
+    useRedirect('loggedIn')
 
     // destructure the use state below, useState hook for signInData:
     const [signInData, setSignInData] = useState({
@@ -49,7 +53,7 @@ function SignInForm() {
         try {
             const {data} = await axios.post("/dj-rest-auth/login/", signInData);
             setCurrentUser(data.user)
-            history.push("/");
+            history.goBack();
         } catch (err) {
             setErrors(err.response?.data);
         }
