@@ -1,7 +1,7 @@
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from "./CurrentUserContext";
-// import { followHelper, unfollowHelper } from "../utils/utils";
+import { subscribeHelper} from "../utils/utils";
 
 
 // creates context objects
@@ -21,55 +21,68 @@ export const CategoryDataProvider = ({ children }) => {
 
     const currentUser = useCurrentUser();
 
-    // const handleSubscribe = async (clickedCategory) => {
-    //     try {
-    //         const {data} = await axiosRes.post('/subscriptions/', {
-    //             subscribed: clickedCategory.id
-    //         });
+    // handle subscribe needs to take clickedCategory and convert to an ID with the first API request
+    // then it can post to the subscriptions end point
+    const handleSubscribe = async (clickedCategory) => {
+        console.log(clickedCategory)
+        // try {
+        //     const {data : { results }} = await axiosReq.get(`/categories`)
+        //     console.log(results)
 
-    //         setCategoryData((prevState) => ({
-    //             ...prevState,
-    //             pageCategory: {
-    //                 results: prevState.pageCategory.results.map(category => 
-    //                     subscribeHelper(category, clickedCategory, data.id)),
-    //             },
-    //             popularCategories: {
-    //                 ...prevState.popularCategories,
-    //                 results: prevState.popularCategories.results.map(category => 
-    //                     subscribeHelper(category, clickedCategory, data.id)),
-    //             },
-    //         }));
+        //     if (clickedCategory === category)
+        //         return category.id
+
+        // } catch (err) {
+        //     console.log(err)
+        // }
+        
+        try {
+            const {data} = await axiosRes.post('/subscriptions/', {
+                category: clickedCategory
+            });
+            console.log(data)
+
+            // setCategoryData((prevState) => ({
+            //     ...prevState,
+            //     pageCategory: {
+            //         results: prevState.pageCategory.results.map(category => 
+            //             subscribeHelper(category, clickedCategory, data.id)),
+            //     },
+            //     popularCategories: {
+            //         ...prevState.popularCategories,
+            //         results: prevState.popularCategories.results.map(category => 
+            //             subscribeHelper(category, clickedCategory, data.id)),
+            //     },
+            // }));
+        } catch (err) {
+            // console.log(err)
+        }
+    }
+
+    const handleUnsubscribe = async (clickedCategory) => {
+        try {
+            await axiosRes.delete(`/subscriptions/${clickedCategory.category_detail.subscribed_id}`, {
+                category: clickedCategory.id
+            });
+
+            // setCategoryData((prevState) => ({
+            //     ...prevState,
+            //     pageCategory: {
+            //         results: prevState.pageCategory.results.map(category => 
+            //             unsubscribeHelper(category, clickedCategory)),
+            //     },
+            //     popularCategories: {
+            //         ...prevState.popularCategories,
+            //         results: prevState.popularCategories.results.map(category => 
+            //             unsubscribeHelper(category, clickedCategory)),
+            //     },
+            // }));
 
 
-    //     } catch (err) {
-    //         // console.log(err)
-    //     }
-    // }
-
-    // const handleUnsubscribe = async (clickedCategory) => {
-    //     try {
-    //         await axiosRes.delete(`/subscriptions/${clickedCategory.subscribed_id}`, {
-    //             subscribed: clickedCategory.id
-    //         });
-
-    //         setCategoryData((prevState) => ({
-    //             ...prevState,
-    //             pageCategory: {
-    //                 results: prevState.pageCategory.results.map(category => 
-    //                     unsubscribeHelper(category, clickedCategory)),
-    //             },
-    //             popularCategories: {
-    //                 ...prevState.popularCategories,
-    //                 results: prevState.popularCategories.results.map(category => 
-    //                     unsubscribeHelper(category, clickedCategory)),
-    //             },
-    //         }));
-
-
-    //     } catch (err) {
-    //         // console.log(err)
-    //     }
-    // }
+        } catch (err) {
+            // console.log(err)
+        }
+    }
 
     useEffect(() => {
         const handleMount = async () => {
@@ -90,7 +103,8 @@ export const CategoryDataProvider = ({ children }) => {
 
     return (
         <CategoryDataContext.Provider value={categoryData}>
-            <SetCategoryDataContext.Provider value={setCategoryData}>
+            <SetCategoryDataContext.Provider value={{setCategoryData, handleSubscribe}}>
+                {/* add handlesubscribe above {{setCategoryData, handleSubscribe}} */}
             {children}
             </SetCategoryDataContext.Provider>
         </CategoryDataContext.Provider>

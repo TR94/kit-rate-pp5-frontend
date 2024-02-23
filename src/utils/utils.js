@@ -18,3 +18,15 @@ export const fetchMoreData = async (resource, setResource) => {
         }));
     } catch (err) { }
 };  
+
+
+// export const subscribeHelper = (category) => {
+//     return category.id
+//         ?   // This is the profile I clicked on,
+//         // update its followers count and set its following id
+//         {
+//             ...category, subscriptions_count: category.subscriptions_count + 1
+//         }
+//         :
+//         category;
+// }

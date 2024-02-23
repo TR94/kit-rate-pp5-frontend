@@ -25,7 +25,7 @@ function CategoryPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const {id} = useParams();
-  const setCategoryData = useSetCategoryData()
+  const {setCategoryData, handleSubscribe} = useSetCategoryData()
   const {pageCategory} = useCategoryData();
   const [category] = pageCategory.results
   const [categoryProducts, setCategoryProducts] = useState({ results: []});
@@ -35,7 +35,6 @@ function CategoryPage() {
         try {
           const [{data: pageCategory}, {data: categoryProducts}] = await Promise.all([
             axiosReq.get(`/categories/${id}/`),
-            // check the request below is correct
             axiosReq.get(`/products/?category=${id}`)
           ]);
           setCategoryData((prevState) => ({
@@ -76,7 +75,7 @@ function CategoryPage() {
         {currentUser && (category?.subscribe_id ? (
           <Button
             className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-            onClick={() => {}}
+            onClick={() => handleSubscribe(category)}
           >
             Subscribe
           </Button>

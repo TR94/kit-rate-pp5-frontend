@@ -4,6 +4,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useSetCategoryData } from "../../contexts/CategoryDataContext";
 
 
 const Category = (props) => {
@@ -11,6 +12,7 @@ const Category = (props) => {
   const { id, subscriptions_count, subscribe_id, product_count,} = category;
 
   const currentUser = useCurrentUser();
+  const {handleSubscribe} = useSetCategoryData();
 
   return (
     <div
@@ -36,7 +38,7 @@ const Category = (props) => {
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Black}`}
-              onClick={() => {}}
+              onClick={() => handleSubscribe(category)}
             >
               subscribe
             </Button>
