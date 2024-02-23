@@ -3,12 +3,11 @@ import styles from "../../styles/Profile.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
 
 
 const Category = (props) => {
-  const { category, mobile, imageSize = 55 } = props;
+  const { category, mobile} = props;
   const { id, subscriptions_count, subscribe_id, product_count,} = category;
 
   const currentUser = useCurrentUser();

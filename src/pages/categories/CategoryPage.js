@@ -3,18 +3,23 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 import Asset from "../../components/Asset";
 
 // import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import NoResults from "../../assets/no-results.png"
 
 import PopularCategories from "./PopularCategories.js";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults.js";
 import { useCategoryData, useSetCategoryData } from "../../contexts/CategoryDataContext.js";
 import { useParams } from "react-router-dom/cjs/react-router-dom.js";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Product from "../products/Product.js"
+import { fetchMoreData } from "../../utils/utils.js"
 
 function CategoryPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -23,18 +28,25 @@ function CategoryPage() {
   const setCategoryData = useSetCategoryData()
   const {pageCategory} = useCategoryData();
   const [category] = pageCategory.results
+  const [categoryProducts, setCategoryProducts] = useState({ results: []});
 
   useEffect(() => {
       const fetchData = async () => {
         try {
-          const [{data: pageCategory}] = await Promise.all([
-            axiosReq.get(`/categories/${id}/`)
-          ])
+          const [{data: pageCategory}, {data: categoryProducts}] = await Promise.all([
+            axiosReq.get(`/categories/${id}/`),
+            // check the request below is correct
+            axiosReq.get(`/products/?category=${id}`)
+          ]);
           setCategoryData((prevState) => ({
             ...prevState,
             pageCategory: { results: [pageCategory] },
           }));
+
+          setCategoryProducts(categoryProducts);
+          console.log(categoryProducts);
           setHasLoaded(true);
+
         } catch (err) {
           console.log(err)
         }
@@ -42,28 +54,65 @@ function CategoryPage() {
       fetchData()
   }, [id, setCategoryData]);
 
-  const mainProfile = (
+  const mainCategory = (
     <>
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
         </Col>
         <Col lg={6}>
-          <h3 className="m-2">Profile username</h3>
-          <p>Profile stats</p>
+          <h3 className="m-2">{category?.category}</h3>
+          <Row className="justify-content-center no-gutters">
+            <Col xs={6} className="my-2">
+              {/* <div>{category.product_count}</div> */}
+              <div>Products</div>
+            </Col>
+            <Col xs={6} className="my-2">
+              {/* <div>{category.subscriptions_count}</div> */}
+              <div>Subscribers</div>
+            </Col>
+          </Row>
         </Col>
         <Col lg={3} className="text-lg-right">
-        <p>Follow button</p>
+        {currentUser && (category?.subscribe_id ? (
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+            onClick={() => {}}
+          >
+            Subscribe
+          </Button>
+        ) : (
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Black}`}
+            onClick={() => {}}
+          >
+            Unsubscribe
+          </Button>
+        ))}
         </Col>
-        <Col className="p-3">Profile content</Col>
       </Row>
     </>
   );
 
-  const mainProfilePosts = (
+  const mainCategoryProducts = (
     <>
       <hr />
-      <p className="text-center">Profile owner's posts</p>
-      <hr />
+      {categoryProducts.results.length ? (
+        <InfiniteScroll 
+          children={categoryProducts.results.map((product) => (
+            <Product key={product.id} {...product} setProducts={setCategoryProducts} />
+          ))}
+          dataLength={categoryProducts.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!categoryProducts.next}
+          next={() => fetchMoreData(categoryProducts, setCategoryProducts)}
+        />
+      ) : (
+        <Asset
+          src={NoResults}
+          message={`No results found, be the first to create a product in ${category?.category}`}
+        />
+      )}
+
     </>
   );
 
@@ -74,8 +123,8 @@ function CategoryPage() {
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
-              {mainProfile}
-              {mainProfilePosts}
+              {mainCategory}
+              {mainCategoryProducts}
             </>
           ) : (
             <Asset spinner />

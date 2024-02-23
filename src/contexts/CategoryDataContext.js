@@ -88,11 +88,9 @@ export const CategoryDataProvider = ({ children }) => {
         handleMount();
     }, [currentUser])
 
-    // return contexts 
-    // add to index.js
     return (
         <CategoryDataContext.Provider value={categoryData}>
-            <SetCategoryDataContext.Provider value={{setCategoryData}}>
+            <SetCategoryDataContext.Provider value={setCategoryData}>
             {children}
             </SetCategoryDataContext.Provider>
         </CategoryDataContext.Provider>

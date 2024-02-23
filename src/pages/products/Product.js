@@ -30,8 +30,6 @@ const Product = (props) => {
         setProducts,
     } = props;
 
-    console.log({props})
-
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
