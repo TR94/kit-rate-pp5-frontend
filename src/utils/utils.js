@@ -1,4 +1,5 @@
 import { axiosReq } from "../api/axiosDefaults";
+import jwtDecode from "jwt-decode";
 
 export const fetchMoreData = async (resource, setResource) => {
     // generic function for the 'next' prop in Infinite Scroll, 
@@ -30,3 +31,16 @@ export const fetchMoreData = async (resource, setResource) => {
 //         :
 //         category;
 // }
+
+export const setTokenTimestamp = (data) => {
+    const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
+    localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+};
+
+export const shouldRefreshToken = () => {
+    return !!localStorage.getItem("refreshTokenTimestamp");
+};
+
+export const removeTokenTimestamp = () => {
+    localStorage.removeItem("refreshTokenTimestamp");
+};
