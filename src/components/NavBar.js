@@ -57,9 +57,9 @@ const NavBar = () => {
             fixed="top">
             <Container>
                 <NavLink to="/">
-                    <Navbar.Brand>
+                    <Navbar.Brand className={styles.Logo}>
                         <img src={logo} alt="logo" height="45"/>
-                        KitRate
+                        <strong>KitRate</strong>
                     </Navbar.Brand>
                 </NavLink>
                 {currentUser && addProductIcon}

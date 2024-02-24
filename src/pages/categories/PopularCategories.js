@@ -1,4 +1,6 @@
 import React from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Container } from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
@@ -16,17 +18,35 @@ const PopularCategories = ({mobile}) => {
           <p>Most popular categories.</p>
           {mobile ? (
             <div className="d-flex justify-content-around">
+                <Row>
                 {popularCategories.results.slice(0,3).map((category) => (
-                <Link to={`/categories/${category.id}`}>
-                  <Category key={category.id} category={category.category} mobile />
-                </Link>
+                  <>
+                    <Col xs={4}>
+                      <Link className="d-flex justify-content-around" to={`/categories/${category.id}`}>
+                        <i class="fa-solid fa-person-biking"></i>
+                      </Link>
+                      <Link className="d-flex justify-content-around" to={`/categories/${category.id}`}>
+                        <span><Category key={category.id} category={category.category} /></span>
+                      </Link>
+                    </Col>
+                </>
                 ))}
+              </Row>
             </div>
           ):(
             popularCategories.results.map((category) => (
-                <Link to={`/categories/${category.id}`}>
-                  <Category key={category.id} category={category.category} />
-                </Link>
+                <Row>
+                  <Col xs={2} className="pl-2 pt-1">
+                    <Link to={`/categories/${category.id}`}>
+                      <i class="fa-solid fa-person-biking"></i>
+                    </Link>
+                  </Col>
+                  <Col xs={10}>
+                    <Link to={`/categories/${category.id}`}>
+                      <span><Category key={category.id} category={category.category} /></span>
+                    </Link>
+                  </Col>
+                </Row>
             ))
           )}
         </>
