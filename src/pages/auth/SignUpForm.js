@@ -6,7 +6,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 import styles from "../../styles/SignForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import signinup_hero from "../../assets/signinup_hero.jpg"
+import signinup_hero from "../../assets/signinup_hero.jpg";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -33,7 +33,7 @@ const SignUpForm = () => {
     const { username, password1, password2 } = signUpData;
 
     // useState error hook 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
 
     // hook to help redirect to the sign-in page 
     const history = useHistory();
@@ -54,7 +54,7 @@ const SignUpForm = () => {
             history.push("/signin");
         } catch (err) {
             setErrors(err.response?.data);
-        }
+        };
     };
 
     return (
@@ -81,7 +81,7 @@ const SignUpForm = () => {
                             <Alert variant="warning" key={idx}>
                                 {message}
                             </Alert>
-                        ))}
+                        ))};
 
                         <Form.Group controlId="password1">
                             <Form.Label className="d-none">Password</Form.Label>
@@ -99,7 +99,7 @@ const SignUpForm = () => {
                             <Alert variant="warning" key={idx}>
                                 {message}
                             </Alert>
-                        ))}
+                        ))};
 
                         <Form.Group controlId="password2">
                             <Form.Label className="d-none">Confirm password</Form.Label>
@@ -117,7 +117,7 @@ const SignUpForm = () => {
                             <Alert variant="warning" key={idx}>
                                 {message}
                             </Alert>
-                        ))}
+                        ))};
 
                         <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
                             Sign-Up

@@ -30,7 +30,7 @@ const PopularCategories = ({mobile}) => {
                       </Link>
                     </Col>
                 </>
-                ))}
+                ))};
               </Row>
             </div>
           ):(
@@ -48,11 +48,11 @@ const PopularCategories = ({mobile}) => {
                   </Col>
                 </Row>
             ))
-          )}
+          )};
         </>
       ) : (
         <Asset spinner />
-      )}
+      )};
     </Container>
   );
 };

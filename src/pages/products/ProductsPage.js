@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
-import styles from "../../styles/ProductsPage.module.css"
+import styles from "../../styles/ProductsPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import Product from "./Product";
@@ -32,8 +32,8 @@ function ProductsPage({ message, filter = "" }) {
                 setHasLoaded(true)
             } catch (err) {
                 console.log(err)
-            }
-        }
+            };
+        };
         setHasLoaded(false)
         // timer to reduce amount of API requests in searchbar - waits 1 sec before making request
         const timer = setTimeout(() => {
@@ -41,7 +41,7 @@ function ProductsPage({ message, filter = "" }) {
         }, 1000)
         return () => {
             clearTimeout(timer)
-        }
+        };
 
     },[filter, query, pathname])
 
@@ -88,13 +88,13 @@ function ProductsPage({ message, filter = "" }) {
                     <Container className={appStyles.Content}>
                         <Asset spinner />
                     </Container>
-                )}
+                )};
             </Col>
             <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
                 <PopularCategories />
             </Col>
         </Row>
     );
-}
+};
 
 export default ProductsPage;

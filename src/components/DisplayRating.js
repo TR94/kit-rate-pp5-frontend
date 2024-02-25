@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa"
+import { FaStar } from "react-icons/fa";
 
 export function DisplayRating({rating=0}) {
   return (
@@ -6,7 +6,7 @@ export function DisplayRating({rating=0}) {
         
       {[...Array(rating)].map(() => {
         return <FaStar size={18} />
-      })}
+      })};
     </div>
-  )
-}
+  );
+};

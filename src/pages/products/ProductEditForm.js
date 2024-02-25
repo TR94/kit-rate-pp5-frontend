@@ -28,8 +28,8 @@ function ProductEditForm() {
 
   const { title, category, description, image } = productData;
 
-  const imageInput = useRef(null)
-  const history = useHistory()
+  const imageInput = useRef(null);
+  const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
@@ -41,8 +41,8 @@ function ProductEditForm() {
         is_owner ? setProductData({ title, description, category, image }) : history.push("/");
       } catch (err) {
         console.log(err);
-      }
-    }
+      };
+    };
     handleMount();
   }, [history, id]);
 
@@ -63,8 +63,8 @@ function ProductEditForm() {
         setCurrentCategories({ results: [category] })
       } catch (err) {
         console.log(err)
-      }
-    }
+      };
+    };
     fetchCategories()
   }, [])
 
@@ -75,7 +75,7 @@ function ProductEditForm() {
         ...productData,
         image: URL.createObjectURL(event.target.files[0]),
       });
-    }
+    };
   };
 
   const handleSubmit = async (event) => {
@@ -87,7 +87,7 @@ function ProductEditForm() {
     formData.append("category", category);
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
-    }
+    };
 
 
     try {
@@ -96,8 +96,8 @@ function ProductEditForm() {
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
-      }
-    }
+      };
+    };
   };
 
   const textFields = (
@@ -117,7 +117,7 @@ function ProductEditForm() {
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
-      ))}
+      ))};
 
       <Form.Group 
         // controlId="category"
@@ -137,7 +137,7 @@ function ProductEditForm() {
                 {category}
               </option>
             )
-          })}
+          })};
         </select>
       </Form.Group>
 
@@ -145,7 +145,7 @@ function ProductEditForm() {
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
-      ))}
+      ))};
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -162,7 +162,7 @@ function ProductEditForm() {
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
-      ))}
+      ))};
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         type="submit"
@@ -216,6 +216,6 @@ function ProductEditForm() {
       </Row>
     </Form>
   );
-}
+};
 
 export default ProductEditForm;

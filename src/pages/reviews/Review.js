@@ -75,7 +75,7 @@ const Review = (props) => {
             handleEdit={() => setShowEditForm(true)}
             handleDelete={handleDelete}
           />
-        )}
+        )};
       </Media>
     </>
   );

@@ -6,8 +6,6 @@ export const fetchMoreData = async (resource, setResource) => {
     // this will fetch next page of data for products/reviews/etc.
     try {
         const { data } = await axiosReq.get(resource.next);
-        console.log(data)
-        console.log(resource.next)
         setResource((prevResource) => ({
             ...prevResource,
             next: data.next,

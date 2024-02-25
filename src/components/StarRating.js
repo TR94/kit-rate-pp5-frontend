@@ -17,11 +17,11 @@ export default function StarRating() {
     setRating(value)
     console.log("Value: " + value)
     console.log("Rating: " + rating)
-  }
+  };
 
   return (
     <div className='App'>
       <Rating onClick={handleRating} ratingValue={rating} /* Available Props */ />
     </div>
-  )
-}
+  );
+};

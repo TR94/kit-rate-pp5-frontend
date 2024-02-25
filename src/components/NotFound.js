@@ -1,7 +1,7 @@
-import React from 'react'
-import NoResults from "../assets/no-results.png"
-import Asset from './Asset'
-import styles from "../styles/NotFound.module.css"
+import React from 'react';
+import NoResults from "../assets/no-results.png";
+import Asset from './Asset';
+import styles from "../styles/NotFound.module.css";
 
 const NotFound = () => {
   return (
@@ -11,7 +11,7 @@ const NotFound = () => {
             message="Sorry, the page you are looking for does not exist"
         />
     </div>
-  )
-}
+  );
+};
 
 export default NotFound

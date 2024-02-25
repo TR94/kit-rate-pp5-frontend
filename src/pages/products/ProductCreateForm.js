@@ -36,8 +36,8 @@ function ProductCreateForm() {
 
   const { title, category, description, rating, image, review } = productData;
 
-  const imageInput = useRef(null)
-  const history = useHistory()
+  const imageInput = useRef(null);
+  const history = useHistory();
 
   // setting categories in the state
   const [currentCategories, setCurrentCategories] = useState({ results: []});
@@ -58,8 +58,8 @@ function ProductCreateForm() {
         setCurrentCategories(prevData => ({...prevData, results: [...results]}))
       } catch (err) {
           console.log(err)
-      }
-    }
+      };
+    };
     fetchCategories()
   }, [])
 
@@ -71,7 +71,7 @@ function ProductCreateForm() {
         ...productData,
         image: URL.createObjectURL(event.target.files[0]),
       });
-    }
+    };
   };
 
   const handleSubmit = async (event) => {
@@ -87,19 +87,16 @@ function ProductCreateForm() {
     formDataReview.append("rating", rating);
     formDataReview.append("content",review);
 
-    console.log(formDataProduct)
     try {
       const { data } = await axiosReq.post("/products/", formDataProduct);
       formDataReview.append("product", data.id)
       const response = await axiosReq.post("/reviews/", formDataReview);
-      console.log(response.data)
-      // can i send to multiple end points... ? or remove rating and first review lines from "add product"
       history.push(`/products/${data.id}`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
-      }
-    }
+      };
+    };
   };
 
   const textFields = (
@@ -139,7 +136,7 @@ function ProductCreateForm() {
                 {category}
               </option>
             )
-          })}
+          })};
         </select>
       </Form.Group>
 
@@ -147,7 +144,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+            ))};
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -164,7 +161,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+            ))};
 
       <Form.Group>
         <Form.Label>Rating</Form.Label>
@@ -197,7 +194,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+            ))};
     </div>
   );
 
@@ -219,7 +216,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+            ))};
       
       <Button 
         className={`${btnStyles.Button} ${btnStyles.Blue}`} 
@@ -265,7 +262,7 @@ function ProductCreateForm() {
                 >
                   <Asset src={Upload} message="Click or tap to upload an image" />
                 </Form.Label>
-              )}
+              )};
 
               <Form.File 
                 id="image-upload" 
@@ -289,6 +286,6 @@ function ProductCreateForm() {
       </Row>
     </Form>
   );
-}
+};
 
 export default ProductCreateForm;

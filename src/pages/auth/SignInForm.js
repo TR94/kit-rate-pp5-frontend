@@ -35,7 +35,7 @@ function SignInForm() {
     const { username, password } = signInData;
 
     // useState error hook 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
 
     // hook to help redirect to the sign-in page 
     const history = useHistory();
@@ -58,7 +58,7 @@ function SignInForm() {
             history.goBack();
         } catch (err) {
             setErrors(err.response?.data);
-        }
+        };
     };
 
   return (
@@ -84,7 +84,7 @@ function SignInForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+            ))};
 
             <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
@@ -102,7 +102,7 @@ function SignInForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+            ))};
 
             <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
               Sign-In
@@ -112,7 +112,7 @@ function SignInForm() {
               <Alert variant="warning" key={idx} className="mt-3">
                 {message}
               </Alert>
-            ))}
+            ))};
 
           </Form>
 
@@ -134,6 +134,6 @@ function SignInForm() {
       </Col>
     </Row>
   );
-}
+};
 
 export default SignInForm;

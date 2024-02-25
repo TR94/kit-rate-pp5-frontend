@@ -10,7 +10,7 @@ import Asset from "../../components/Asset";
 // import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import NoResults from "../../assets/no-results.png"
+import NoResults from "../../assets/no-results.png";
 
 import PopularCategories from "./PopularCategories.js";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -18,16 +18,16 @@ import { axiosReq } from "../../api/axiosDefaults.js";
 import { useCategoryData, useSetCategoryData } from "../../contexts/CategoryDataContext.js";
 import { useParams } from "react-router-dom/cjs/react-router-dom.js";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Product from "../products/Product.js"
-import { fetchMoreData } from "../../utils/utils.js"
+import Product from "../products/Product.js";
+import { fetchMoreData } from "../../utils/utils.js";
 
 function CategoryPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const {id} = useParams();
-  const {setCategoryData, handleSubscribe} = useSetCategoryData()
+  const {setCategoryData, handleSubscribe} = useSetCategoryData();
   const {pageCategory} = useCategoryData();
-  const [category] = pageCategory.results
+  const [category] = pageCategory.results;
   const [categoryProducts, setCategoryProducts] = useState({ results: []});
 
   useEffect(() => {
@@ -48,8 +48,8 @@ function CategoryPage() {
 
         } catch (err) {
           console.log(err)
-        }
-      }
+        };
+      };
       fetchData()
   }, [id, setCategoryData]);
 
@@ -86,7 +86,7 @@ function CategoryPage() {
           >
             Unsubscribe
           </Button>
-        ))}
+        ))};
         </Col>
       </Row>
     </>
@@ -110,7 +110,7 @@ function CategoryPage() {
           src={NoResults}
           message={`No results found, be the first to create a product in ${category?.category}`}
         />
-      )}
+      )};
 
     </>
   );
@@ -127,7 +127,7 @@ function CategoryPage() {
             </>
           ) : (
             <Asset spinner />
-          )}
+          )};
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
@@ -135,6 +135,6 @@ function CategoryPage() {
       </Col>
     </Row>
   );
-}
+};
 
 export default CategoryPage;

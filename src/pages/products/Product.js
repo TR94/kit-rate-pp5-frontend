@@ -47,7 +47,7 @@ const Product = (props) => {
             }));
         } catch (err) {
             console.log(err);
-        }
+        };
     };
 
     const handleUnlike = async () => {
@@ -63,7 +63,7 @@ const Product = (props) => {
             }));
         } catch (err) {
             console.log(err);
-        }
+        };
     };
 
     const handleEdit = () => {
@@ -71,12 +71,12 @@ const Product = (props) => {
       };
     
     const handleDelete = async () => {
-    try {
-        await axiosRes.delete(`/products/${id}/`);
-        history.goBack();
-    } catch (err) {
-        console.log(err);
-    }
+        try {
+            await axiosRes.delete(`/products/${id}/`);
+            history.goBack();
+        } catch (err) {
+            console.log(err);
+        };
     };
 
     return (
@@ -125,7 +125,7 @@ const Product = (props) => {
                         >
                             <i className="far fa-heart" />
                         </OverlayTrigger>
-                    )}
+                    )};
 
                     {favourited_count}
                     <Link to={`/products/${id}`}>

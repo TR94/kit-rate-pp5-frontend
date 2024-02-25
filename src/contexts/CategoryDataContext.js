@@ -56,8 +56,8 @@ export const CategoryDataProvider = ({ children }) => {
             // }));
         } catch (err) {
             // console.log(err)
-        }
-    }
+        };
+    };
 
     const handleUnsubscribe = async (clickedCategory) => {
         try {

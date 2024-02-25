@@ -93,6 +93,6 @@ function ReviewCreateForm(props) {
       </button>
     </Form>
   );
-}
+};
 
 export default ReviewCreateForm;

@@ -1,13 +1,13 @@
-import React from 'react'
-import { Navbar, Container, Nav} from "react-bootstrap"
-import { NavLink } from "react-router-dom"
-import logo from "../assets/kitrate_logo.png"
-import styles from "../styles/NavBar.module.css"
-import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext'
-import Avatar from './Avatar'
-import axios from 'axios'
-import useClickOutsideToggle from '../hooks/useClickOutsideToggle'
-import { removeTokenTimestamp } from '../utils/utils'
+import React from 'react';
+import { Navbar, Container, Nav} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/kitrate_logo.png";
+import styles from "../styles/NavBar.module.css";
+import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
+import Avatar from './Avatar';
+import axios from 'axios';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import { removeTokenTimestamp } from '../utils/utils';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
@@ -76,7 +76,7 @@ const NavBar = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-  )
-}
+  );
+};
 
 export default NavBar
