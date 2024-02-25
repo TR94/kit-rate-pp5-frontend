@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
+import styles from "../../styles/ProductsPage.module.css"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import Product from "./Product";
@@ -48,9 +49,9 @@ function ProductsPage({ message, filter = "" }) {
         <Row className="h-100">
             <Col className="py-2 p-0 p-lg-2" lg={8}>
                 <PopularCategories mobile/>
-                <i className={`fas fa-search`} />
+                <i className={`fas fa-search ${styles.SearchIcon}`} />
                 <Form
-                className=""
+                className={styles.SearchBar}
                 onSubmit={(event) => event.preventDefault()}
                 >
                 <Form.Control
