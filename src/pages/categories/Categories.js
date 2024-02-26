@@ -42,7 +42,7 @@ const Category = (props) => {
             >
               subscribe
             </Button>
-          ))};
+          ))}
       </div>
     </div>
   );

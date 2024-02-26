@@ -56,7 +56,7 @@ function ProductPage() {
             />
           ) : reviews.results.length ? (
             "Reviews"
-          ) : null};
+          ) : null}
 
           {reviews.results.length ? (
             <InfiniteScroll
@@ -76,14 +76,14 @@ function ProductPage() {
           ) : currentUser ? (
             <span>No reviews yet, be the first to submit a review!</span>
           ) : 
-            <span>No reviews...yet</span>};
+            <span>No reviews...yet</span>}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         Popular categories for desktop
       </Col>
     </Row>
-  );
+  )
 };
 
 export default ProductPage;

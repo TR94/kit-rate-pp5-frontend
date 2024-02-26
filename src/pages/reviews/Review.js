@@ -41,7 +41,7 @@ const Review = (props) => {
       setReviews((prevReviews) => ({
         ...prevReviews,
         results: prevReviews.results.filter((review) => review.id !== id),
-      }));
+      }))
     } catch (err) {}
   };
 
@@ -75,10 +75,10 @@ const Review = (props) => {
             handleEdit={() => setShowEditForm(true)}
             handleDelete={handleDelete}
           />
-        )};
+        )}
       </Media>
     </>
-  );
+  )
 };
 
-export default Review;
+export default Review

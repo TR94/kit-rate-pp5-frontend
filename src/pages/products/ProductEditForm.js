@@ -117,7 +117,7 @@ function ProductEditForm() {
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
-      ))};
+      ))}
 
       <Form.Group 
         // controlId="category"
@@ -137,7 +137,7 @@ function ProductEditForm() {
                 {category}
               </option>
             )
-          })};
+          })}
         </select>
       </Form.Group>
 
@@ -145,7 +145,7 @@ function ProductEditForm() {
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
-      ))};
+      ))}
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -162,7 +162,7 @@ function ProductEditForm() {
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
-      ))};
+      ))}
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         type="submit"

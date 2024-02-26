@@ -33,7 +33,7 @@ function ReviewCreateForm(props) {
       setReviews((prevReviews) => ({
         ...prevReviews,
         results: [data, ...prevReviews.results],
-      }));
+      }))
       setProduct((prevProduct) => ({
         results: [
           {
@@ -41,7 +41,7 @@ function ReviewCreateForm(props) {
             review_count: prevProduct.results[0].review_count + 1,
           },
         ],
-      }));
+      }))
       setContent("");
       setRating("");
     } catch (err) {
@@ -92,7 +92,7 @@ function ReviewCreateForm(props) {
         submit
       </button>
     </Form>
-  );
+  )
 };
 
 export default ReviewCreateForm;

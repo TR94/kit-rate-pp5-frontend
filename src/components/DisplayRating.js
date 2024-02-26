@@ -6,7 +6,7 @@ export function DisplayRating({rating=0}) {
         
       {[...Array(rating)].map(() => {
         return <FaStar size={18} />
-      })};
+      })}
     </div>
   );
 };

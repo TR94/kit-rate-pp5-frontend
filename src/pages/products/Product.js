@@ -125,7 +125,7 @@ const Product = (props) => {
                         >
                             <i className="far fa-heart" />
                         </OverlayTrigger>
-                    )};
+                    )}
 
                     {favourited_count}
                     <Link to={`/products/${id}`}>

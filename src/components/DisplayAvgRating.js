@@ -12,7 +12,7 @@ export function DisplayAvgRating({avg_rating=0}) {
         
       {[...Array(handleRound(avg_rating))].map(() => {
         return <FaStar size={30} />
-      })};
+      })}
     </div>
   );
 };

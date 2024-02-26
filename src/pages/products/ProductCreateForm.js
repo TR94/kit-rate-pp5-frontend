@@ -144,7 +144,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))};
+            ))}
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -161,7 +161,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))};
+            ))}
 
       <Form.Group>
         <Form.Label>Rating</Form.Label>
@@ -194,9 +194,9 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))};
+            ))}
     </div>
-  );
+  )
 
   const textFields2 = (
     <div>
@@ -216,7 +216,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))};
+            ))}
       
       <Button 
         className={`${btnStyles.Button} ${btnStyles.Blue}`} 
@@ -262,7 +262,7 @@ function ProductCreateForm() {
                 >
                   <Asset src={Upload} message="Click or tap to upload an image" />
                 </Form.Label>
-              )};
+              )}
 
               <Form.File 
                 id="image-upload" 

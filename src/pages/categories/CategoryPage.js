@@ -86,7 +86,7 @@ function CategoryPage() {
           >
             Unsubscribe
           </Button>
-        ))};
+        ))}
         </Col>
       </Row>
     </>
@@ -110,7 +110,7 @@ function CategoryPage() {
           src={NoResults}
           message={`No results found, be the first to create a product in ${category?.category}`}
         />
-      )};
+      )}
 
     </>
   );
@@ -127,7 +127,7 @@ function CategoryPage() {
             </>
           ) : (
             <Asset spinner />
-          )};
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">

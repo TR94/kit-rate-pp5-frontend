@@ -84,7 +84,7 @@ function SignInForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))};
+            ))}
 
             <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
@@ -102,7 +102,7 @@ function SignInForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))};
+            ))}
 
             <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
               Sign-In
@@ -112,7 +112,7 @@ function SignInForm() {
               <Alert variant="warning" key={idx} className="mt-3">
                 {message}
               </Alert>
-            ))};
+            ))}
 
           </Form>
 
@@ -133,7 +133,7 @@ function SignInForm() {
         />
       </Col>
     </Row>
-  );
+  )
 };
 
 export default SignInForm;

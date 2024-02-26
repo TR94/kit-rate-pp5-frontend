@@ -7,8 +7,8 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     className="fas fa-ellipsis-v"
     ref={ref}
     onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
+      e.preventDefault()
+      onClick(e)
     }}
   />
 ));
