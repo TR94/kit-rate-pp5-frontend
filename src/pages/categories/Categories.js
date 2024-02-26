@@ -38,7 +38,7 @@ const Category = (props) => {
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Black}`}
-              onClick={() => handleSubscribe(category)}
+              onClick={() => handleSubscribe(category, currentUser)}
             >
               subscribe
             </Button>

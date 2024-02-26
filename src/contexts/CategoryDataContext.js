@@ -23,39 +23,30 @@ export const CategoryDataProvider = ({ children }) => {
 
     // handle subscribe needs to take clickedCategory and convert to an ID with the first API request
     // then it can post to the subscriptions end point
-    const handleSubscribe = async (clickedCategory) => {
-        console.log(clickedCategory)
-        // try {
-        //     const {data : { results }} = await axiosReq.get(`/categories`)
-        //     console.log(results)
-
-        //     if (clickedCategory === category)
-        //         return category.id
-
-        // } catch (err) {
-        //     console.log(err)
-        // }
-        
+    const handleSubscribe = async (category, owner) => {   
+        console.log(category, owner.username)  
+        console.log(categoryData.category)   
         try {
             const {data} = await axiosRes.post('/subscriptions/', {
-                category: clickedCategory
+                category: category,
+                owner: owner.username
             });
             console.log(data)
 
-            // setCategoryData((prevState) => ({
-            //     ...prevState,
-            //     pageCategory: {
-            //         results: prevState.pageCategory.results.map(category => 
-            //             subscribeHelper(category, clickedCategory, data.id)),
-            //     },
-            //     popularCategories: {
-            //         ...prevState.popularCategories,
-            //         results: prevState.popularCategories.results.map(category => 
-            //             subscribeHelper(category, clickedCategory, data.id)),
-            //     },
-            // }));
+            setCategoryData((prevState) => ({
+                ...prevState,
+                pageCategory: {
+                    results: prevState.pageCategory.results.map(category => 
+                        subscribeHelper(category, data.id)),
+                },
+                popularCategories: {
+                    ...prevState.popularCategories,
+                    results: prevState.popularCategories.results.map(category => 
+                        subscribeHelper(category, data.id)),
+                },
+            }));
         } catch (err) {
-            // console.log(err)
+            console.log(err)
         };
     };
 

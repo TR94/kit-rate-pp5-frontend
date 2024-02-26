@@ -11,6 +11,7 @@ import Product from "./Product";
 import ReviewCreateForm from "../reviews/ReviewCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Review from "../reviews/Review";
+import PopularCategories from "../categories/PopularCategories";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
@@ -43,7 +44,7 @@ function ProductPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular categories for mobile</p>
+        <PopularCategories mobile/>
         <Product {...product.results[0]} setProduct={setProduct} productPage />
         <Container className={appStyles.Content}>
           {currentUser ? (
@@ -80,7 +81,7 @@ function ProductPage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular categories for desktop
+        <PopularCategories />
       </Col>
     </Row>
   )
