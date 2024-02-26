@@ -61,7 +61,7 @@ function ProductCreateForm() {
       };
     };
     fetchCategories()
-  }, [])
+  }, []);
 
 
   const handleChangeImage = (event) => {

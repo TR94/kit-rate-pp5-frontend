@@ -47,7 +47,7 @@ const Product = (props) => {
             }));
         } catch (err) {
             console.log(err);
-        };
+        }
     };
 
     const handleUnlike = async () => {
@@ -68,15 +68,15 @@ const Product = (props) => {
 
     const handleEdit = () => {
         history.push(`/products/${id}/edit`);
-      };
+    };
     
     const handleDelete = async () => {
-        try {
-            await axiosRes.delete(`/products/${id}/`);
-            history.goBack();
-        } catch (err) {
-            console.log(err);
-        };
+    try {
+        await axiosRes.delete(`/products/${id}/`);
+        history.goBack();
+    } catch (err) {
+        console.log(err);
+    }
     };
 
     return (
@@ -135,7 +135,7 @@ const Product = (props) => {
                 </div>
             </Card.Body>
         </Card>
-    );
-};
+    )
+}
 
 export default Product;
