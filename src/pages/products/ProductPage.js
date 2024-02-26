@@ -15,7 +15,6 @@ import PopularCategories from "../categories/PopularCategories";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
-import { StarRating } from "../../components/StarRating";
 
 
 function ProductPage() {

@@ -118,9 +118,7 @@ function ProductCreateForm() {
               </Alert>
             ))}
 
-      <Form.Group 
-        // controlId="category"
-      >
+      <Form.Group >
         <Form.Label className="d-flex justify-content-center">Category</Form.Label>
         <select 
           aria-label="Choose a relevant category for this product"

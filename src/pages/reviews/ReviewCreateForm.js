@@ -7,7 +7,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/ReviewForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import StarRating from "../../components/StarRating";
 
 function ReviewCreateForm(props) {
   const { product, setProduct, setReviews, profileImage, profile_id } = props;
@@ -58,10 +57,11 @@ function ReviewCreateForm(props) {
                 </Link>
                 <Form.Group>
                     <Form.Label>Rating: </Form.Label>
-                    {/* <select
+                    <select
                         name="rating"
                         value={rating}
                         onChange={handleRatingChange}
+                        className="rounded ml-2"
                     >
                       <option>Rate this product</option>
                       <option value="1">One</option>
@@ -69,9 +69,7 @@ function ReviewCreateForm(props) {
                       <option value="3">Three</option>
                       <option value="4">Four</option>
                       <option value="5">Five</option>
-                    </select> */}
-                    <StarRating 
-                      onClick={handleRatingChange} ratingValue={rating} />
+                    </select>
                 </Form.Group>
             </InputGroup>
             <Form.Control
