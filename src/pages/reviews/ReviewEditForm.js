@@ -9,7 +9,6 @@ function ReviewEditForm(props) {
   const { id, content, rating, setShowEditForm, setReviews } = props;
 
   const [formContent, setFormContent] = useState(content);
-  const [formRating, setFormRating] = useState(rating);
   const [newRating, setNewRating] = useState(rating);
 
   const handleChange = (event) => {

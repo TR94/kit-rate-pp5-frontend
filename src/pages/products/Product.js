@@ -22,7 +22,6 @@ const Product = (props) => {
         title,
         description,
         image,
-        updated_at,
         category,
         category_detail,
         average_rating,
