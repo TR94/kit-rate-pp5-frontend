@@ -28,8 +28,8 @@ export const CategoryDataProvider = ({ children }) => {
         console.log(categoryData.category)   
         try {
             const {data} = await axiosRes.post('/subscriptions/', {
-                category: category,
-                owner: owner.username
+                owner: owner.username,
+                category: category
             });
             console.log(data)
 

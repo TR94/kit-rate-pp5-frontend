@@ -28,7 +28,7 @@ function CategoryPage() {
   const {setCategoryData, handleSubscribe} = useSetCategoryData();
   const {pageCategory} = useCategoryData();
   const [category] = pageCategory.results;
-  const [categoryProducts, setCategoryProducts] = useState({ results: []});
+  const [categoryProducts, setCategoryProducts] = useState({ results: []})
 
   useEffect(() => {
       const fetchData = async () => {
@@ -44,6 +44,7 @@ function CategoryPage() {
 
           setCategoryProducts(categoryProducts);
           console.log(categoryProducts);
+          console.log(pageCategory)
           setHasLoaded(true);
 
         } catch (err) {
@@ -62,11 +63,11 @@ function CategoryPage() {
           <h3 className="m-2">{category?.category}</h3>
           <Row className="justify-content-center no-gutters">
             <Col xs={6} className="my-2">
-              {/* <div>{category.product_count}</div> */}
+              <div>{category?.product_count}</div>
               <div>Products</div>
             </Col>
             <Col xs={6} className="my-2">
-              {/* <div>{category.subscriptions_count}</div> */}
+              <div>{category?.subscriptions_count}</div>
               <div>Subscribers</div>
             </Col>
           </Row>
