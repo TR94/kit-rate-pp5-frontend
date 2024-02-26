@@ -10,6 +10,7 @@ function ReviewEditForm(props) {
 
   const [formContent, setFormContent] = useState(content);
   const [formRating, setFormRating] = useState(rating);
+  const [newRating, setNewRating] = useState(rating);
 
   const handleChange = (event) => {
     setFormContent(event.target.value);
@@ -18,9 +19,8 @@ function ReviewEditForm(props) {
   // error here where setFormRating isn't working correctly. 
   // line 21 is correct but it isn't settingFormRating correctly.
   const handleRatingChange = (event) => {
-    setFormRating(event.target.value);
-    console.log(event.target.value)
-    console.log(formRating)
+    const rating = event.target.value;
+    setNewRating(rating);
   };
 
   const handleSubmit = async (event) => {
@@ -28,7 +28,7 @@ function ReviewEditForm(props) {
     try {
       await axiosRes.put(`/reviews/${id}/`, {
         content: formContent.trim(),
-        rating: {formRating}
+        rating: newRating
       });
       setReviews((prevReviews) => ({
         ...prevReviews,
@@ -37,7 +37,7 @@ function ReviewEditForm(props) {
             ? {
                 ...review,
                 content: formContent.trim(),
-                rating: {formRating},
+                rating: newRating,
                 updated_at: "now",
 
               }
@@ -55,16 +55,16 @@ function ReviewEditForm(props) {
       <Form.Group>
         <Form.Label>Rating: </Form.Label>
         <select
+        aria-label="Select a new product rating"
           name="rating"
-          value={rating}
           onChange={handleRatingChange}
         >
-          <option>Rate this product</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="4">Four</option>
-          <option value="5">Five</option>
+          <option value="">Select new rating</option>
+          <option key="1" value="1">One</option>
+          <option key="2" value="2">Two</option>
+          <option key="3" value="3">Three</option>
+          <option key="4" value="4">Four</option>
+          <option key="5" value="5">Five</option>
         </select>
       </Form.Group>
       <Form.Group className="pr-1">
