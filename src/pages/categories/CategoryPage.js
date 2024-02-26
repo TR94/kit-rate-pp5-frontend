@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 import Asset from "../../components/Asset";
 
-// import styles from "../../styles/ProfilePage.module.css";
+import styles from "../../styles/PopularCategories.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import NoResults from "../../assets/no-results.png";

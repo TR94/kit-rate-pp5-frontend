@@ -13,6 +13,7 @@ import { useCurrentUser } from './contexts/CurrentUserContext';
 import ProductEditForm from './pages/products/ProductEditForm';
 import CategoryPage from './pages/categories/CategoryPage';
 import NotFound from './components/NotFound';
+import ProfilePage from './pages/profiles/ProfilePage';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
               <Route exact path="/products/:id/edit" render={() => <ProductEditForm />} />
               <Route exact path="/products/:id" render={() => <ProductPage />}/>
               <Route exact path="/categories/:id" render={() => <CategoryPage />}/>
+              <Route exact path="/profiles/:id" render={() => <ProfilePage />}/>
               <Route render={() => <NotFound />}/>
             </Switch>
           </Container>

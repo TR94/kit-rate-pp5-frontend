@@ -22,10 +22,10 @@ const PopularCategories = ({mobile}) => {
                 {popularCategories.results.slice(0,3).map((category) => (
                   <>
                     <Col xs={4}>
-                      <Link className="d-flex justify-content-around" to={`/categories/${category.id}`}>
+                      <Link className="d-flex justify-content-center" to={`/categories/${category.id}`}>
                         <i class="fa-solid fa-person-biking"></i>
                       </Link>
-                      <Link className="d-flex justify-content-around" to={`/categories/${category.id}`}>
+                      <Link className="d-flex justify-content-center" to={`/categories/${category.id}`}>
                         <span><Category key={category.id} category={category.category} /></span>
                       </Link>
                     </Col>

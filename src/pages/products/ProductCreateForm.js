@@ -121,11 +121,12 @@ function ProductCreateForm() {
       <Form.Group 
         // controlId="category"
       >
-        <Form.Label>Category</Form.Label>
+        <Form.Label className="d-flex justify-content-center">Category</Form.Label>
         <select 
           aria-label="Choose a relevant category for this product"
           name="category" 
           onChange={handleChange} 
+          className="rounded"
         >
 
           <option value="">Select a category</option>
@@ -164,21 +165,14 @@ function ProductCreateForm() {
             ))}
 
       <Form.Group>
-        <Form.Label>Rating</Form.Label>
-        {/* <Form.Control
-          as="textarea"
-          rows={2}
-          name="rating"
-          value={rating}
-          onChange={handleChange}
-          required
-        /> */}
+        <Form.Label className="d-flex justify-content-center">Rating</Form.Label>
         <select 
           aria-label="Choose a rating for this product"
           name="rating" 
           value={rating}
           onChange={handleChange} 
           required 
+          className="rounded"
         >
           <option>Rate this product</option>
           <option value="1">One</option>

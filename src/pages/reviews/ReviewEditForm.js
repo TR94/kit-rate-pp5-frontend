@@ -58,6 +58,7 @@ function ReviewEditForm(props) {
         aria-label="Select a new product rating"
           name="rating"
           onChange={handleRatingChange}
+          className="rounded ml-2"
         >
           <option value="">Select new rating</option>
           <option key="1" value="1">One</option>

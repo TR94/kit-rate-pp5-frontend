@@ -125,11 +125,12 @@ function ProductEditForm() {
       <Form.Group 
         // controlId="category"
       >
-        <Form.Label>Category</Form.Label>
+        <Form.Label className="d-flex justify-content-center">Category</Form.Label>
         <select 
           aria-label="Choose a relevant category for this product"
           name="category" 
           onChange={handleChange} 
+          className="rounded"
         >
 
           <option value="">{category}</option>
