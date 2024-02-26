@@ -21,7 +21,7 @@ const PopularCategories = ({mobile}) => {
                 <Row>
                 {popularCategories.results.slice(0,3).map((category) => (
                   <>
-                    <Col xs={4}>
+                    <Col xs={4} className="pl-0">
                       <Link className="d-flex justify-content-center" to={`/categories/${category.id}`}>
                         <i class="fa-solid fa-person-biking"></i>
                       </Link>

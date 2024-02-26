@@ -25,7 +25,7 @@ function CategoryPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const {id} = useParams();
-  const {setCategoryData, handleSubscribe} = useSetCategoryData();
+  const {setCategoryData, handleSubscribe, handleUnsubscribe} = useSetCategoryData();
   const {pageCategory} = useCategoryData();
   const [category] = pageCategory.results;
   const [categoryProducts, setCategoryProducts] = useState({ results: []})
@@ -76,7 +76,7 @@ function CategoryPage() {
         {currentUser && (category?.subscribe_id ? (
           <Button
           className={`${btnStyles.Button} ${btnStyles.Black}`}
-          onClick={() => {}}
+          onClick={() => handleUnsubscribe(category, subscriptions)}
           >
             Unsubscribe
           </Button>

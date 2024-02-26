@@ -20,13 +20,17 @@ export const fetchMoreData = async (resource, setResource) => {
 
 
 export const subscribeHelper = (category) => {
-    return category.id
-        ?   
-        {
-            ...category, subscriptions_count: category.subscriptions_count + 1
-        }
+    return category.id ?   
+        {...category, subscriptions_count: category.subscriptions_count + 1}
         :
         category;
+}
+
+export const unsubscribeHelper = (category) => {
+    return category.id ?   
+    {...category, subscriptions_count: category.subscriptions_count - 1}
+    :
+    category;
 }
 
 export const setTokenTimestamp = (data) => {

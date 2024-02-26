@@ -1,7 +1,7 @@
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from "./CurrentUserContext";
-import { subscribeHelper} from "../utils/utils";
+import { subscribeHelper, unsubscribeHelper} from "../utils/utils";
 
 
 // creates context objects
@@ -21,20 +21,6 @@ export const CategoryDataProvider = ({ children }) => {
 
     const currentUser = useCurrentUser();
 
-    // const getSubscriptions = async () => {
-    //    try{
-    //     const {data} = await axiosReq.get("/subscriptions/my-subscriptions")
-    //     console.log(data)
-
-    //    } catch (err){
-    //     console.log(err)
-    //    }
-       
-    
-    // }
-
-    // handle subscribe needs to take clickedCategory and convert to an ID with the first API request
-    // then it can post to the subscriptions end point
     const handleSubscribe = async (category, owner) => {   
         const cat = categoryData?.popularCategories?.results?.find((v)=> v.category === category)   
         try {
@@ -60,28 +46,36 @@ export const CategoryDataProvider = ({ children }) => {
         };
     };
 
-    const handleUnsubscribe = async (clickedCategory) => {
-        try {
-            await axiosRes.delete(`/subscriptions/${clickedCategory.category_detail.subscribed_id}`, {
-                category: clickedCategory.id
-            });
+    const handleUnsubscribe = async (category, subscriptions) => {
+        console.log("category: " + category.id)
+        console.log(subscriptions.results)
+        
+        const {sub} = subscriptions.results
+        console.log({sub})
+            
+        // need function to take subscriptions and check for category.id and return subscription.id
 
-            // setCategoryData((prevState) => ({
-            //     ...prevState,
-            //     pageCategory: {
-            //         results: prevState.pageCategory.results.map(category => 
-            //             unsubscribeHelper(category, clickedCategory)),
-            //     },
-            //     popularCategories: {
-            //         ...prevState.popularCategories,
-            //         results: prevState.popularCategories.results.map(category => 
-            //             unsubscribeHelper(category, clickedCategory)),
-            //     },
-            // }));
+        const sub_id = subscriptions?.results?.find((value) => value.category === category)
+            
+        try {
+            await axiosRes.delete(`/subscriptions/${subscriptions.results.id}`)
+
+            setCategoryData((prevState) => ({
+                ...prevState,
+                pageCategory: {
+                    results: prevState.pageCategory.results.map(category => 
+                        unsubscribeHelper(category, subscriptions.id)),
+                },
+                popularCategories: {
+                    ...prevState.popularCategories,
+                    results: prevState.popularCategories.results.map(category => 
+                        unsubscribeHelper(category, subscriptions.id)),
+                },
+            }));
 
 
         } catch (err) {
-            // console.log(err)
+            console.log(err)
         }
     }
 
@@ -104,7 +98,7 @@ export const CategoryDataProvider = ({ children }) => {
 
     return (
         <CategoryDataContext.Provider value={categoryData}>
-            <SetCategoryDataContext.Provider value={{setCategoryData, handleSubscribe}}>
+            <SetCategoryDataContext.Provider value={{setCategoryData, handleSubscribe, handleUnsubscribe}}>
                 {/* add handlesubscribe above {{setCategoryData, handleSubscribe}} */}
             {children}
             </SetCategoryDataContext.Provider>
