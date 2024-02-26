@@ -32,6 +32,9 @@ function ProductEditForm() {
   const history = useHistory();
   const { id } = useParams();
 
+  const [currentCategories, setCurrentCategories] = useState({ results: []});
+
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -46,8 +49,6 @@ function ProductEditForm() {
     handleMount();
   }, [history, id]);
 
-  const [currentCategories, setCurrentCategories] = useState({ results: [] });
-
   const handleChange = (event) => {
     setProductData({
       ...productData,
@@ -55,12 +56,14 @@ function ProductEditForm() {
     });
   };
 
+  // function to fetch the categories from the API
+  // request made when component mounts
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data: category } = await axiosReq.get(`/categories`)
-        console.log(category)
-        setCurrentCategories({ results: [category] })
+        const { data: {results} } = await axiosReq.get(`/categories`)
+        console.log(results)
+        setCurrentCategories(prevData => ({...prevData, results: [...results]}))
       } catch (err) {
         console.log(err)
       };
@@ -91,8 +94,8 @@ function ProductEditForm() {
 
 
     try {
-      await axiosReq.put(`/products/${id}`, formData);
-      history.push(`/products/${id}`);
+      await axiosReq.put(`/products/${id}/`, formData);
+      history.push(`/products/${id}/`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
@@ -129,7 +132,7 @@ function ProductEditForm() {
           onChange={handleChange} 
         >
 
-          <option value="">Select a category</option>
+          <option value="">{category}</option>
           {currentCategories?.results?.map((selection) => {
             const {id, category} = selection;
             return (

@@ -91,7 +91,7 @@ function ProductCreateForm() {
       const { data } = await axiosReq.post("/products/", formDataProduct);
       formDataReview.append("product", data.id)
       const response = await axiosReq.post("/reviews/", formDataReview);
-      history.push(`/products/${data.id}`);
+      history.push(`/products/${data.id}/`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
