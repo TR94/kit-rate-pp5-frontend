@@ -21,17 +21,27 @@ export const CategoryDataProvider = ({ children }) => {
 
     const currentUser = useCurrentUser();
 
+    // const getSubscriptions = async () => {
+    //    try{
+    //     const {data} = await axiosReq.get("/subscriptions/my-subscriptions")
+    //     console.log(data)
+
+    //    } catch (err){
+    //     console.log(err)
+    //    }
+       
+    
+    // }
+
     // handle subscribe needs to take clickedCategory and convert to an ID with the first API request
     // then it can post to the subscriptions end point
     const handleSubscribe = async (category, owner) => {   
-        console.log(category, owner.username)  
-        console.log(categoryData.category)   
+        const cat = categoryData?.popularCategories?.results?.find((v)=> v.category === category)   
         try {
             const {data} = await axiosRes.post('/subscriptions/', {
                 owner: owner.username,
-                category: category
+                category: cat.id
             });
-            console.log(data)
 
             setCategoryData((prevState) => ({
                 ...prevState,

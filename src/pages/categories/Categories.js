@@ -8,8 +8,7 @@ import { useSetCategoryData } from "../../contexts/CategoryDataContext";
 
 
 const Category = (props) => {
-  const { category, mobile} = props;
-  const { id, subscriptions_count, subscribe_id, product_count,} = category;
+  const { id, category, created_at, owner, is_owner, subscribe_id, subscriptions_count, product_count, mobile} = props;
 
   const currentUser = useCurrentUser();
   const {handleSubscribe} = useSetCategoryData();

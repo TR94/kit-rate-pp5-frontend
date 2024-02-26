@@ -29,22 +29,22 @@ function CategoryPage() {
   const {pageCategory} = useCategoryData();
   const [category] = pageCategory.results;
   const [categoryProducts, setCategoryProducts] = useState({ results: []})
+  const [subscriptions, setSubscriptions] = useState({results: []})
 
   useEffect(() => {
       const fetchData = async () => {
         try {
-          const [{data: pageCategory}, {data: categoryProducts}] = await Promise.all([
+          const [{data: pageCategory}, {data: categoryProducts}, {data: subscriptions}] = await Promise.all([
             axiosReq.get(`/categories/${id}/`),
-            axiosReq.get(`/products/?category=${id}`)
+            axiosReq.get(`/products/?category=${id}`),
+            axiosReq.get("/subscriptions/my-subscriptions")
           ]);
           setCategoryData((prevState) => ({
             ...prevState,
             pageCategory: { results: [pageCategory] },
           }));
-
           setCategoryProducts(categoryProducts);
-          console.log(categoryProducts);
-          console.log(pageCategory)
+          setSubscriptions(subscriptions)
           setHasLoaded(true);
 
         } catch (err) {
@@ -75,17 +75,17 @@ function CategoryPage() {
         <Col lg={3} className="text-lg-right">
         {currentUser && (category?.subscribe_id ? (
           <Button
-            className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-            onClick={() => handleSubscribe(category)}
+          className={`${btnStyles.Button} ${btnStyles.Black}`}
+          onClick={() => {}}
           >
-            Subscribe
+            Unsubscribe
           </Button>
         ) : (
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Black}`}
-            onClick={() => {}}
+            className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+            onClick={() => handleSubscribe(category, currentUser)}
           >
-            Unsubscribe
+            Subscribe
           </Button>
         ))}
         </Col>

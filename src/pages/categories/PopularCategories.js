@@ -26,7 +26,7 @@ const PopularCategories = ({mobile}) => {
                         <i class="fa-solid fa-person-biking"></i>
                       </Link>
                       <Link className="d-flex justify-content-center" to={`/categories/${category.id}`}>
-                        <span><Category key={category.id} category={category.category} /></span>
+                        <span><Category {...category} key={category.id} /></span>
                       </Link>
                     </Col>
                 </>
@@ -43,7 +43,7 @@ const PopularCategories = ({mobile}) => {
                   </Col>
                   <Col xs={10}>
                     <Link to={`/categories/${category.id}`}>
-                      <span><Category key={category.id} category={category.category} /></span>
+                      <span><Category {...category} key={category.id} /></span>
                     </Link>
                   </Col>
                 </Row>
