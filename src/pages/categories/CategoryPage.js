@@ -33,7 +33,11 @@ function CategoryPage() {
   useEffect(() => {
       const fetchData = async () => {
         try {
-          const [{data: pageCategory}, {data: categoryProducts}, {data: subscriptions}] = await Promise.all([
+          const [
+            {data: pageCategory}, 
+            {data: categoryProducts}, 
+            {data: subscriptions}
+          ] = await Promise.all([
             axiosReq.get(`/categories/${id}/`),
             axiosReq.get(`/products/?category=${id}`),
             axiosReq.get("/subscriptions/my-subscriptions")
@@ -47,7 +51,7 @@ function CategoryPage() {
           setHasLoaded(true);
 
         } catch (err) {
-          console.log(err)
+          // console.log(err)
         };
       };
       fetchData()

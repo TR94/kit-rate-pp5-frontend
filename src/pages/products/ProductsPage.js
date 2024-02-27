@@ -31,7 +31,7 @@ function ProductsPage({ message, filter = "" }) {
                 setProducts(data)
                 setHasLoaded(true)
             } catch (err) {
-                console.log(err)
+                // console.log(err)
             };
         };
         setHasLoaded(false)
@@ -69,7 +69,11 @@ function ProductsPage({ message, filter = "" }) {
                             <InfiniteScroll 
                                 children = {
                                     products.results.map(product => (
-                                        <Product key={product.id} {...product} setProducts={setProducts}/>
+                                        <Product 
+                                            key={product.id} 
+                                            {...product} 
+                                            setProducts={setProducts}
+                                        />
                                     ))
                                 }
                                 dataLength={products.results.length}

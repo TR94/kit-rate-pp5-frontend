@@ -21,9 +21,6 @@ const Category = (props) => {
             className="align-self-center" to={`/categories/${id}`}>
               <strong>{category}</strong>
         </Link>
-      {/* <div className={`mx-2 d-flex column`}>
-        <strong>{category}</strong>
-      </div> */}
       <div className={`text-left ${!mobile && "ml-0"}`}>
         {!mobile && currentUser &&
           (subscribe_id ? (

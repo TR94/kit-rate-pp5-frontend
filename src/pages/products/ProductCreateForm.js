@@ -57,7 +57,7 @@ function ProductCreateForm() {
         const {data : { results }} = await axiosReq.get(`/categories`)
         setCurrentCategories(prevData => ({...prevData, results: [...results]}))
       } catch (err) {
-          console.log(err)
+          // console.log(err)
       };
     };
     fetchCategories()

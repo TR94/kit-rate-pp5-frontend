@@ -42,7 +42,9 @@ const Review = (props) => {
         ...prevReviews,
         results: prevReviews.results.filter((review) => review.id !== id),
       }))
-    } catch (err) {}
+    } catch (err) {
+      // console.log(err)
+    }
   };
 
   return (

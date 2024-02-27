@@ -34,7 +34,7 @@ function ProductPage() {
             setProduct({results: [product]})
             setReviews(reviews)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         };
     };
     handleMount()

@@ -45,7 +45,7 @@ const Product = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 
@@ -61,7 +61,7 @@ const Product = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         };
     };
 
@@ -74,7 +74,7 @@ const Product = (props) => {
         await axiosRes.delete(`/products/${id}/`);
         history.goBack();
     } catch (err) {
-        console.log(err);
+        // console.log(err);
     }
     };
 
@@ -88,7 +88,8 @@ const Product = (props) => {
                     </Link>
                     <div className="d-flex align-items-center">
                         <span><DisplayAvgRating avg_rating={average_rating} /></span>
-                        {is_owner && productPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
+                        {is_owner && productPage && 
+                            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
                     </div>
                 </Media>
             </Card.Body>

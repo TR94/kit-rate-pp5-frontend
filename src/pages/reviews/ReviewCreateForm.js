@@ -44,7 +44,7 @@ function ReviewCreateForm(props) {
       setContent("");
       setRating("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

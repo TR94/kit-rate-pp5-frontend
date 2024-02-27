@@ -43,7 +43,7 @@ function ProductEditForm() {
 
         is_owner ? setProductData({ title, description, category, image }) : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       };
     };
     handleMount();
@@ -62,10 +62,9 @@ function ProductEditForm() {
     const fetchCategories = async () => {
       try {
         const { data: {results} } = await axiosReq.get(`/categories`)
-        console.log(results)
         setCurrentCategories(prevData => ({...prevData, results: [...results]}))
       } catch (err) {
-        console.log(err)
+        // console.log(err)
       };
     };
     fetchCategories()
@@ -122,9 +121,7 @@ function ProductEditForm() {
         </Alert>
       ))}
 
-      <Form.Group 
-        // controlId="category"
-      >
+      <Form.Group >
         <Form.Label className="d-flex justify-content-center">Category</Form.Label>
         <select 
           aria-label="Choose a relevant category for this product"
@@ -201,7 +198,6 @@ function ProductEditForm() {
                   Change the image
                 </Form.Label>
               </div>
-
 
               <Form.File
                 id="image-upload"
