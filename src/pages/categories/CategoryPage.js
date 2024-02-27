@@ -75,7 +75,7 @@ function CategoryPage() {
         {currentUser && (category?.subscribe_id ? (
           <Button
           className={`${btnStyles.Button} ${btnStyles.Black}`}
-          onClick={() => handleUnsubscribe(category, subscriptions)}
+          onClick={() => handleUnsubscribe(category, currentUser)}
           >
             Unsubscribe
           </Button>

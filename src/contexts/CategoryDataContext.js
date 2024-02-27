@@ -48,17 +48,17 @@ export const CategoryDataProvider = ({ children }) => {
 
     const handleUnsubscribe = async (category, subscriptions) => {
         console.log("category: " + category.id)
-        console.log(subscriptions.results)
+        // console.log(subscriptions.results)
         
-        const {sub} = subscriptions.results
-        console.log({sub})
+        // const {sub} = subscriptions.results
+        // console.log({sub})
             
-        // need function to take subscriptions and check for category.id and return subscription.id
+        // // need function to take subscriptions and check for category.id and return subscription.id
 
-        const sub_id = subscriptions?.results?.find((value) => value.category === category)
+        // const sub_id = subscriptions?.results?.find((value) => value.category === category)
             
         try {
-            await axiosRes.delete(`/subscriptions/${subscriptions.results.id}`)
+            await axiosRes.delete(`/subscriptions/${category.id}/`)
 
             setCategoryData((prevState) => ({
                 ...prevState,

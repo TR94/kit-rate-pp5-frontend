@@ -125,6 +125,7 @@ function ProductCreateForm() {
           name="category" 
           onChange={handleChange} 
           className="rounded"
+          required
         >
 
           <option value="">Select a category</option>

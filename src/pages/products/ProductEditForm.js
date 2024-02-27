@@ -133,7 +133,7 @@ function ProductEditForm() {
           className="rounded"
         >
 
-          <option value="">{category}</option>
+          <option value="">Choose new category</option>
           {currentCategories?.results?.map((selection) => {
             const {id, category} = selection;
             return (

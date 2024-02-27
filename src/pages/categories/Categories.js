@@ -11,7 +11,7 @@ const Category = (props) => {
   const { id, category, subscribe_id, mobile} = props;
 
   const currentUser = useCurrentUser();
-  const {handleSubscribe} = useSetCategoryData();
+  const {handleSubscribe, handleUnsubscribe} = useSetCategoryData();
 
   return (
     <div
@@ -30,7 +30,7 @@ const Category = (props) => {
           (subscribe_id ? (
             <Button
               className={`${btnStyles.Button} ${btnStyles.BlackOutline} d-flex justify-content-around`}
-              onClick={() => {}}
+              onClick={() => handleUnsubscribe(category, currentUser)}
             >
               unsubscribe
             </Button>
