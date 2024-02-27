@@ -15,21 +15,20 @@ const Category = (props) => {
 
   return (
     <div
-      className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
+      className={"my-3 d-flex align-items-center flex-column"}
     >
-      <div>
         <Link 
             className="align-self-center" to={`/categories/${id}`}>
+              <strong>{category}</strong>
         </Link>
-      </div>
-      <div className={`mx-2 ${styles.WordBreak}`}>
+      {/* <div className={`mx-2 d-flex column`}>
         <strong>{category}</strong>
-      </div>
-      <div className={`text-right ${!mobile && "ml-auto"}`}>
+      </div> */}
+      <div className={`text-left ${!mobile && "ml-0"}`}>
         {!mobile && currentUser &&
           (subscribe_id ? (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline} d-flex justify-content-around`}
+              className={`${btnStyles.Button} ${btnStyles.BlackOutline} ${styles.Subscribe} d-flex justify-content-around`}
               onClick={() => handleUnsubscribe(category, currentUser)}
             >
               unsubscribe

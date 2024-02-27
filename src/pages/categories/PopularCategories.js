@@ -34,12 +34,12 @@ const PopularCategories = ({mobile}) => {
           ):(
             popularCategories.results.map((category) => (
                 <Row>
-                  <Col xs={2} className="pl-2 pt-1">
+                  <Col xs={3} className="pl-4 pt-4">
                     <Link to={`/categories/${category.id}`}>
                       <i className="fa-solid fa-person-biking"></i>
                     </Link>
                   </Col>
-                  <Col xs={10}>
+                  <Col xs={9}>
                     <Link to={`/categories/${category.id}`}>
                       <span><Category {...category} key={category.id} /></span>
                     </Link>
