@@ -427,35 +427,35 @@ The profile page functionality is the next piece of work for this site. It would
 
 # Component usage
 The React framework allows components to be created in a generic way so they can be reused across the project/projects. KitRate has several of these reusable components:
-axiosDefaults: used to handle requests and responses to and from the API
-Asset: used to handle on-screen loading symbol, image and messages to the user
-PopularCategories: conditionally renders mobile or desktop format and displays categories in order of popularity. Used on the home, feed, favourites, category and product pages. 
-MoreDropdown: gives access to editing functionality based on ownership and logged in user. Used for reviews and products. 
-Review: template for displaying review content and rating. Mapped over to display the data as many times as required. 
-Product: template for displaying product data such as image, title, description, etc. Mapped over to display the data as many times as required. 
-Contexts: sets “globally” accessible data such as the logged in user (CurrentUserContext) and relevant category (CategoryDataContext) to be used as props in other pages. 
+* axiosDefaults: used to handle requests and responses to and from the API
+* Asset: used to handle on-screen loading symbol, image and messages to the user
+* PopularCategories: conditionally renders mobile or desktop format and displays categories in order of popularity. Used on the home, feed, favourites, category and product pages. 
+* MoreDropdown: gives access to editing functionality based on ownership and logged in user. Used for reviews and products. 
+* Review: template for displaying review content and rating. Mapped over to display the data as many times as required. 
+* Product: template for displaying product data such as image, title, description, etc. Mapped over to display the data as many times as required. 
+* Contexts: sets “globally” accessible data such as the logged in user (CurrentUserContext) and relevant category (CategoryDataContext) to be used as props in other pages. 
 
 # Technologies Used
 Coding languages used:
--   HTML5
-CSS3
-Python3
-JavaScript including ES6
+* HTML5
+* CSS3
+* Python3
+* JavaScript including ES6
 Frameworks:
-React Bootstrap
-Django REST  
-Psycopg2
-React 
+* React Bootstrap
+* Django REST  
+* Psycopg2
+vReact 
 
 # Libraries used
 A variety of npm libraries have been used to enable functionality:
-axios: used for interacting the with API
-react-bootstrap: styling for the site with predefined styles for elements 
-infinite-scroll-component: package for continuously loading data one API page at a time 
-jwt-decode: used for web token management 
-react-icons: icons accessible through react 
-react-select: package for creating a drop-down options list 
-react-simple-star-rating: package to implement an interactive star rating system 
+* axios: used for interacting the with API
+* react-bootstrap: styling for the site with predefined styles for elements 
+* infinite-scroll-component: package for continuously loading data one API page at a time 
+* jwt-decode: used for web token management 
+* react-icons: icons accessible through react 
+* react-select: package for creating a drop-down options list 
+* react-simple-star-rating: package to implement an interactive star rating system 
 
 ## External resources used:
 ### Google Fonts
@@ -476,7 +476,7 @@ Version control, file storage and cloud-based coding environment all provided by
 ### Heroku 
 Hosting platform linked into the GitHub repository which published a deployed site. 
 
-### Cloudinary
+### Cloudinary
 Cloud based storage for images and static files which remains stable to ensure links stay open indefinitely. 
 
 # Testing
@@ -558,24 +558,25 @@ CSS for:
 # Bugs
 
 ## Solved bugs:
-Number of reviews not displaying correctly:
+1. Number of reviews not displaying correctly:
 * Solved after discovering a typo, correct prop referenced and issue fixed
 2. Favourites list of products not correct:
-Solved by adjusting the filter value and now displaying correctly. 
+* Solved by adjusting the filter value and now displaying correctly. 
 3. Subscription data not being handled correctly, not showing buttons as expected:
-Ternary needed fixing with the right props based on the backend
+* Ternary needed fixing with the right props based on the backend
 
 ## Unfixed Bugs
 Issues still remaining in the GitHub project under Planned Future Work section. 
 <a href="https://github.com/users/TR94/projects/4" target="_blank">Link to the GitHub project</a>
-Order of home, feed and favourites pages:
-Ordering not working for the product pages. “-created_at” isn’t resulting in a newest first list of products as expected. 
+
+1. Order of home, feed and favourites pages:
+* Ordering not working for the product pages. “-created_at” isn’t resulting in a newest first list of products as expected. 
 2. Form validation:
-Although forms cannot be submitted without being completed, the on-screen prompts for the user explaining the issue aren’t always being displayed. The user experience will be improved if this can be fixed.
+* Although forms cannot be submitted without being completed, the on-screen prompts for the user explaining the issue aren’t always being displayed. The user experience will be improved if this can be fixed.
 3. Subscribe/Unsubscribe buttons not refreshing after use:
-After subscribing or unsubscribing using the button, the expected behaviour is for the button to toggle to the other option. This is currently happening, only updates once the page is refreshed. Poor UX and needs fixing. 
+* After subscribing or unsubscribing using the button, the expected behaviour is for the button to toggle to the other option. This is currently happening, only updates once the page is refreshed. Poor UX and needs fixing. 
 4. Product edit form category dropdown pre-populated:
-Within the product edit form, the category dropdown option isn’t pre-populating with the current category data. Work around has been implemented for this but it would be a better user experience if this was populated correctly. 
+* Within the product edit form, the category dropdown option isn’t pre-populating with the current category data. Work around has been implemented for this but it would be a better user experience if this was populated correctly. 
 
 ## Console
 See test document for console errors
@@ -587,31 +588,31 @@ The project was developed using GitPod and all changes were pushed to GitHub to 
 It is recommended to deploy the barebones of the project onto Heroku as soon as possible to ensure the connections have been made before the development begins. For a react project this can be a single line of text to show the page is under construction.
 
 Local deployment is from the Github repository using the following steps:
-Clone the repository from Github using the “Code” button (or if you have an extension to GitPod, click this)
-Open your IDE and link the Github repository to import the files
-Command “npm start” will start the development server running - open the port.
-There may be an error when connecting to the backend - you’ll need to allow the GitHub address from the development site to be allowed into the deployed back end site. Go to Heroku config vars for the back end and update CLIENT_ORIGIN_DEV with the GitHub address.
-Restart the Heroku dyno and refresh dev site. 
+1. Clone the repository from Github using the “Code” button (or if you have an extension to GitPod, click this)
+2. Open your IDE and link the Github repository to import the files
+3. Command “npm start” will start the development server running - open the port.
+4. There may be an error when connecting to the backend - you’ll need to allow the GitHub address from the development site to be allowed into the deployed back end site. Go to Heroku config vars for the back end and update CLIENT_ORIGIN_DEV with the GitHub address.
+5. Restart the Heroku dyno and refresh dev site. 
 
 
 ### Heroku deployment for public use:
-Login to your Heroku account and create a new app from the dashboard 
-Connect the GitHub repository to the Heroku app 
-In the deploy tab, you can enable automatic deployments linked to the GitHub repository 
-Deploy the files using “Deploy branch” from main branch
-Once the app has finished building, click “View” to open the app. 
+1. Login to your Heroku account and create a new app from the dashboard 
+2. Connect the GitHub repository to the Heroku app 
+3. In the deploy tab, you can enable automatic deployments linked to the GitHub repository 
+4. Deploy the files using “Deploy branch” from main branch
+5. Once the app has finished building, click “View” to open the app. 
 
 
 # Credits 
 
 Media:
-Images were taken from Pexels
+* Images were taken from Pexels
 
 Code:
-W3Schools and Stack Overflow helped with various coding challenges 
-Code Institute for walk-through projects that this site is based on. A lot of the styling, components and pages are based on Code Institute examples. 
+* W3Schools and Stack Overflow helped with various coding challenges 
+* Code Institute for walk-through projects that this site is based on. A lot of the styling, components and pages are based on Code Institute examples. 
 
 Acknowledgements:
-Thank you to my mentor, Richard Wells, for his time, patience and guidance on the development of this website. 
-Thanks also are given to the Code Institute Slack Community who are always on hand to help at a moments notice.
-Thanks to the Code Institute tutor support who have been very persistent in helping with coding challenges throughout the project.
+* Thank you to my mentor, Richard Wells, for his time, patience and guidance on the development of this website. 
+* Thanks also are given to the Code Institute Slack Community who are always on hand to help at a moments notice.
+* Thanks to the Code Institute tutor support who have been very persistent in helping with coding challenges throughout the project.
