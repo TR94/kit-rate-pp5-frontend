@@ -283,7 +283,7 @@ Based on the strategy above and the agile management approach, the content requi
  
 # Structure
 The site-map allows the basic structure of the site to be developed based on the strategy and scope above. This depicts how the site will be constructed with a brief overview of the content for each page:
-![KitRate Structure](/static/readme_files/.png)
+![KitRate Structure](/src/assets/readme_assets/kitrate_sitemap.png)
 
 The site interacts with a backend API database - the database model for this can be found in the backend documentation.
 
@@ -296,25 +296,25 @@ Balsamiq was used to create the following wireframes:
 Home page will render all the products showing statistics about them such as category, number of reviews, number of favourites, average rating, etc.
 The Home page wireframes can be seen below, these consider the layout on a full size screen and a mobile screen:
 
-![Home page wireframe - Desktop](/static/readme_files/.png)
+![Home page wireframe - Desktop](/src/assets/readme_assets/kitrate_wf_home_desktop.png)
 
-![Home page wireframe - Mobile](/static/readme_files/.png)
+![Home page wireframe - Mobile](/src/assets/readme_assets/kitrate_wf_home_mobile.png)
 
 ## Product Page:
 Clicking on a product will take the user to the product page. This gives a list of the reviews left by other users and also provides the opportunity for the user to leave their own review. 
 The Product Page wireframes can be seen below in full size and mobile screen sizes:
 
-![Product page wireframe - Desktop](/static/readme_files/.png)
+![Product page wireframe - Desktop](/src/assets/readme_assets/kitrate_wf_product_desktop.png)
 
-![Product page wireframe - Mobile](/static/readme_files/.png)
+![Product page wireframe - Mobile](/src/assets/readme_assets/kitrate_wf_product_mobile.png)
 
 ## Add Product Page:
 To add a new product to the site, users can navigate to this page. Allow the required information will be inputted through the form. 
 The Add Product Page wireframes can be seen below in full size and mobile screen sizes:
 
-![Add product page wireframe - Desktop](/static/readme_files/.png)
+![Add product page wireframe - Desktop](/src/assets/readme_assets/kitrate_wf_add_product_desktop.png)
 
-![Add product page wireframe - Mobile](/static/readme_files/.png)
+![Add product page wireframe - Mobile](/src/assets/readme_assets/kitrate_wf_add_product_mobile.png)
 
 ## Feed/Favourites Pages:
 The Feed and Favourites pages will be very similar to the home page however the data used to populate them will be filtered. The Feed page will consist of products from a category that the user has subscribed to and the Favourites page will be populated with products the user has favourited. 
@@ -325,7 +325,7 @@ As with any site, branding is a key aspect to consider as this provides familiar
 
 The pale pink (hex code: #FCCBC4) is the main banner colour for the site and is used in the NavBar. The background colour, light grey (hex code: #F8F8F8) is modern and stylish whilst remain discrete. Ascents of blue (hex code: #9ED6E7) are used throughout the site to draw attention to interactive parts of the site where required. 
 
-![KitRate Colour Palette](/static/readme_files/palette.png)
+![KitRate Colour Palette](/src/assets/readme_assets/kitrate_palette.png)
 
 ## Font:
 For the logo, a modern and clean looking text is used. GoogleFonts provides “Roboto” in a regular 400 weight option.
@@ -484,12 +484,12 @@ Cloud based storage for images and static files which remains stable to ensure l
 ### Functionality testing:
 Thorough manual testing has been carried out to test the functionality of the site and ensure it is operating as expected. 
 
-<a href=“…” target="_blank">Link to testing document</a>
+[KitRate Front End Testing](/src/assets/readme_assets/kitrate_frontend_testing.pdf)
 
 ### Accessibility
 A key aspect of any site is making it available for all users. This can be tested using Lighthouse in Chrome Dev tools - the output of this test for KitRate is 94.
 
-![KitRate Lighthouse](/static/readme_files/accessibility.png)
+![KitRate Lighthouse](/src/assets/readme_assets/kitrate_lighthouse.png)
 
 To make the site as accessible as possible the following has been implemented:
 Aria-labels on links where possible
@@ -507,7 +507,7 @@ There is one breakpoint where the popular categories move to the side of the pag
 ### Validator Testing 
 Validation testing using W3C Mark-Up Validation Service: HTML for:
 * index.html - no errors
-Validate JavaScript (https://validatejavascript.com/) validation service for:
+<a href="https://validatejavascript.com/" target="_blank">Validate JavaScript</a> validation service for:
 * axiosDefaults.js - no errors
 * Asset.js - no errors
 * Avatar.js - no errors
@@ -555,7 +555,8 @@ CSS for:
 * Reviews.module.css - no errors
 * SignForm.module.css - no errors
 
-# Bugs
+
+# Bugs
 
 ## Solved bugs:
 1. Number of reviews not displaying correctly:
@@ -567,6 +568,7 @@ CSS for:
 
 ## Unfixed Bugs
 Issues still remaining in the GitHub project under Planned Future Work section. 
+
 <a href="https://github.com/users/TR94/projects/4" target="_blank">Link to the GitHub project</a>
 
 1. Order of home, feed and favourites pages:
