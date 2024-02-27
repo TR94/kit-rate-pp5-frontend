@@ -53,50 +53,59 @@ The website needs an interactive UX which is intuitive to use and allows the use
 
 #### User Authentication
 Sign Up: As a user I want to be able to create a new account so that I can interact with the website.
-	Acceptance:
+	
+ Acceptance:
 1. A link for the user to follow to sign up
 2. A page where to user can enter the required details to create an account
 3. Confirm the account details are sent to the back end API and the Profile is created
 
 Sign-In: As a user I want to be able to sign in to the app so that I can gain full access to all the features on the site.
-	Acceptance:
+	
+ Acceptance:
 1. A link for the user to follow to sign in
 2. A page where the user can enter their sign-in details 
 3. Confirm the request is sent to the back end API and authentication is successful
 4. Full access to all the site’s features becomes available after signing in 
 
 Logged in Status: As a user I want to be able to easily tell if I am logged in or not so that I can log in if I need to.
-	Acceptance:
+	
+ Acceptance:
 1. A clear indication of the users status such as site features missing, colour indication, etc. 
 
 Refreshing access tokens: As a user I want to be able to stay logged in until I choose to log out so that I can maintain full access to all the site’s features.
-	Acceptance:
+	
+ Acceptance:
 1. Upon refreshing a page the user must stay logged in 
 2. Upon navigating around the site the user must stayed logged in
 3. After 10 minutes of inactivity the user must remain logged in
 
 #### Navigation
 Navigation: As a user I want to have a consistent and easy to use method of navigating between pages so that I can easily move around the site. 
-	Acceptance:
+	
+ Acceptance:
 1. A navigation bar that remains in the same place throughout the site
 
 Routing: As a user I want to be able to navigate through pages in a seamless fashion so that I can continue to view content without waiting for pages to load. 
-	Acceptance:
+	
+ Acceptance:
 1. Pages will be created using React framework where components will refresh without the page reloading 
 2. Whilst waiting for backend API responses, some kind of loading indication must be used
 
 Conditional rendering: As a user I want to only see navigation links that are relevant to me and my logged in/out status so that I can not be distracted by buttons that I don’t need or cannot use.
-	Acceptance: 
+	
+ Acceptance: 
 1. The main features of the site will not be available to users who are not logged in 
 2. Upon logging in the navigation bar will display further features of the site and remove the sign-up and sign-in links
 
 Avatar: As a user I want to view user's avatars so that I can easily identify users of the site.
-	Acceptance:
+	
+ Acceptance:
 1. Each profile must have the option for a user name and display photo
 
 #### Adding & Saving Products
 Create a product review: As a logged in user I want to be able to create a new product so that I can share my review of the product and invite others to share their experiences. 
-	Acceptance:
+	
+ Acceptance:
 1. A link to a product creation page must be easily visible
 2. The production creation page must have:
 * Image upload
@@ -108,55 +117,65 @@ Create a product review: As a logged in user I want to be able to create a new p
 4. Confirm data has been displayed on the site
 
 View a product review: As a user I want to be able to view the details of a single product review so that I can learn more about it.
-	Acceptance:
+	
+ Acceptance:
 1. Page must display the details of the product 
 2. Page must display the reviews with their individual ratings 
 3. An overall rating should be displayed next to the product averaging out the individual reviews 
 
 Save a product review: As a logged in user I want to be able to save a product review so that I can easily find it again in my own favourites collection.
-	Acceptance:
+	
+ Acceptance:
 1. Functionality to save an individual post by clicking a button on it
 2. A dedicated page of products that have been saved by the user for their interest
 3. The link to this collection should be in the navigation bar
 
 #### The Products Page
 Search products: As a user I want to be able to search the products with keywords so that I can find reviews that are of interest to me.
-	Acceptance:
+	
+ Acceptance:
 1. Easy accessible search bar 
 2. Search bar successfully returns products based on keyword inputs
 
 View most recent products: As a user I want to be able to view all the most recent products, ordered by most recently reviewed first so that I am up to date with the newest content.
-	Acceptance:
+	
+ Acceptance:
 1. Products displayed on the page in the most recent order
 
 View saved products: As a logged in user I want to be able to view the products I’ve favourited so that I can find the reviews I’ve found useful. 
-	Acceptance:
+	
+ Acceptance:
 1. A dedicated page of products that havße been favourited by the user for their interest
 2. The link to this collection should be in the navigation bar
 
 View products of followed categories: As a logged in user I want to be able to view content filtered by a specific category so that I can keep up to date with new products of interest.
-	Acceptance:
+	
+ Acceptance:
 1. A category filter is present on the main page 
 2. Filter only displays products related to a single category 
 
 Infinite scroll: As a user I want to be able to have pages load quickly and content to load automatically as I scroll so that I don't have to click to move through the content. 
-	Acceptance:
+	
+ Acceptance:
 1. Loading spinner must be displayed whilst waiting for API responses to load components 
 2. Whilst scrolling through content the next batch of reviews/products should load automatically
 
 #### Feed page
 Most followed categories: As a user I want to be able to see a list of the most followed categories so that I can see which categories are popular.
-	Acceptance:
+	
+ Acceptance:
 1. List of most popular categories displayed on the page 
 
 Follow/Unfollow a category: As a logged in user I want to be able to follow and unfollow product categories so that I can see and remove products in my posts feed.
-	Acceptance:
+	
+ Acceptance:
 1. Functionality to follow / unfollow categories 
 2. Confirm that following a category populates the feed page with products related to that category 
 3. Confirm unfollowing a category removes the products from the feed page 
 
 View all products in a specific category: As a user I want to be able to view all the products in a specific category so that I can explore that category or decide I want to follow it.
-	Acceptance:
+	
+ Acceptance:
 1. Category page present which shows all products associated with that category 
 2. Page shows the following statistics about the category:
 * Number of products 
@@ -164,7 +183,8 @@ View all products in a specific category: As a user I want to be able to view al
 
 #### The Product Review Page
 Product Review page: As a user I want to be able to view the individual product page so that I can read the reviews about the product.
-	Acceptance:
+	
+ Acceptance:
 1. Clicking on the product will bring the user to the Product Review page related to that product
 2. Page must display the following information about the product:
 * Image
@@ -174,35 +194,41 @@ Product Review page: As a user I want to be able to view the individual product 
 * Average star rating (out of 5)
 
 Edit product: As a product owner I want to be able edit my product title and description so that I can make corrections or update my product information after it was created.
-	Acceptance:
+	
+ Acceptance:
 1. If the user logged in owns the product, they’ll have the option to edit the content
 2. Editing function automatically fills in the current information
 3. Confirm upon submitting the new information, the backend API updates
 4. Confirm the new information is displayed on the site
 
 Create a review: As a logged in user I want to be able to add reviews to a product so that I can share my thoughts about the product.
-	Acceptance:
+	
+ Acceptance:
 1. Space on the Product page to leave a free text review 
 2. Review should have an option to rate the product out of 5 stars
 
 Review date: As a user I want to be able to see how long ago a review was made so that I know how old the review is
-	Acceptance:
+	
+ Acceptance:
 1. Review will have information stating the profile that made the review and when it was made
 
 View reviews: As a user I want to be able to read reviews on products so that I can understand what other users think about the product.
-	Acceptance:
+	
+ Acceptance:
 1. Product page has facility to view reviews associated to that product 
 2. Reviews are in date created order - newest first
 
 Delete a review: As an owner of a review I want to be able to delete my review so that I can control my contributions to the site.
-	Acceptance:
+	
+ Acceptance:
 1. If the user logged in owns the review, they’ll have the option to delete the review
 2. Delete function has a warning and confirmation before caring out the action
 3. Confirm upon submitting the new information, the backend API updates
 4. Confirm the new information is displayed on the site
 
 Edit a review: As an owner of a review I want to be able to edit my review so that I can fix or update my existing content.
-	Acceptance:
+	
+ Acceptance:
 1. If the user logged in owns the review, they’ll have the option to edit the content
 2. Editing function automatically fills in the current information
 3. Confirm upon submitting the new information, the backend API updates
@@ -211,16 +237,19 @@ Edit a review: As an owner of a review I want to be able to edit my review so th
 
 #### The Category Page
 Category page: As a user I want to be able to view a category specific page so that I can see more information about that category.
-	Acceptance:
+	
+ Acceptance:
 1. Clicking on a category link will direct to that category’s page
 
 #### The Profile Page
 Profile page: As a user I want to be able to view other users profiles so that I can see more information about them.
-	Acceptance:
+	
+ Acceptance:
 1. Clicking on a User’s avatar will direct to the their profile page
 
 User profile - user stats: As a user I want to be able to view statistics about a specific user: bio, number of products owned, number of reviews made and their rating trends (count of 5 star, 4 star, etc ratings) so that I can make a judgement of how valid their content is.
-	Acceptance:
+	
+ Acceptance:
 1. Profile page must contain the following information related to the specific profile:
 * Number of reviews made 
 * Number of products owned 
@@ -228,14 +257,16 @@ User profile - user stats: As a user I want to be able to view statistics about 
 * Feed of products they own
 
 Edit profile: As a logged in user I want to be able to edit my profile so that I can change my profile picture and bio
-	Acceptance:
+	
+ Acceptance:
 1. If the user logged in owns the profile, they’ll have the option to edit the content
 2. Editing function automatically fills in the current information
 3. Confirm upon submitting the new information, the backend API updates
 4. Confirm the new information is displayed on the site
 
 Update username and password: As a logged in user I want to be able to update my username and password so that I can change my display name and keep my profile secure
-	Acceptance:
+	
+ Acceptance:
 1. Functionality to update the username and/or password of the user logged in as required
 2. Editing function automatically fills in the current information
 3. Confirm upon submitting the new information, the backend API updates
@@ -312,15 +343,87 @@ Icons are used across the site to improve user experience with easily recognisab
 
 # Features
 ## Navigation and Logo
-## Content for the home page
-## Product component
+The logo and text:
+
+* The logo for KitRate (a star and text) is in the top left and remains fixed throughout the site. Clicking on the logo returns the user to the home page as is traditional website convention
+* The navigations links are in the top bar and also fixed in place throughout the site. The links are Home, Feed, Favourites and Sign Out for logged in users whilst logged out users dont have access to Feed and Favourites.
+* A light background and dark text is specifically chosen for high constrast which improves readability.
+* The navigation bar is responsive and therefore for smaller screens the links shrink into a burger menu to save on screen space.
+
+![KitRate navigation bar](/src/assets/readme_assets/kitrate_navbar.png)
+
+
+## Home page
+* Home page centres around a list of products which are listed in order of newest first.
+* Search bar available to find specific products of interest
+* Each product shows the following information; image, average star rating, title, description, category, number of favourites and number of reviews.
+* The page also shows popular categories - these are explain more in a separate section below
+
+![KitRate home page](/src/assets/readme_assets/kitrate_home.png)
+
+## Feed and Favourites pages
+* Based on the home page but the product list is filtered
+* Feed page is filtered with products from categories that the user has subscribed to
+* Favourites page features the products the user has favourited
+
+## Product page
+* Clicking on a product will take the user to a page related to that product. Alongside the information found on the home page it'll include the list of reviews underneath the product.
+
+## Category page
+* The category page is access by clicking a category link from the popular categories component or from the category link under a product
+* The page shows the number of products in the category and the number of users who have subscribed to it
+* It contains products that are related to that cateogry
+
+![KitRate category page](/src/assets/readme_assets/kitrate_category.png)
+
 ## Popular Categories
+* Users can subscribe to a category and each category keeps a track of how many subscribers it has. The most popular categories (i.e. the ones with the most subscribers) are listed for the user to see.
+* This component gives the user the change to navigate to a category and also subscribe/unsubscribe from a category
+* This component is responsive, for mobile it is shrink to the top 3 categories and is across the top of the screen
+
+![KitRate popular categories - mobile](/src/assets/readme_assets/kitrate_mobile_cat.png)
+
+![KitRate popular categories - desktop](/src/assets/readme_assets/kitrate_desktop_cat.png)
+  
 ## Creating a product
+* Clicking "Add product" from the navigation bar takes the user to a form to create a new product
+* Form allows the user to add a new product with title, category (chosen from a pre-defined list), description and image. It also asks the user to give the new products it's first rating and review.
+
+![KitRate add a product](/src/assets/readme_assets/kitrate_addproduct.png)
+
+## Editing a product
+* If the user owns the product they have the option to edit the data about it
+* The edit form is pre-populated with the current information and allows the user to update it
+* Clicking submit will take them back to that specific product's page
+
+![KitRate product edit form](/src/assets/readme_assets/kitrate_product_edit.png)
+
 ## Leaving a review
-## Categories page  
+* On the product page, there is a simple form where the user can leave a review using a rating (pre-defined drop down list) and free-text review area.
+* This is submitted to the product and may update the average rating
+
+![KitRate add a review](/src/assets/readme_assets/kitrate_reviews.png)
+
+## Edit a review
+* If the user owns the review they have the option to edit the data about it
+* The edit form is pre-populated with the current information and allows the user to update it
+* Clicking submit will publish the updated review
+
+![KitRate edit a review](/src/assets/readme_assets/kitrate_review_edit.png)
+
+## No results 
+* In situations where the feed/favourites pages has no products or the search bar can't find any matches a "No Results" image is displayed as feedback to the user
+
+![KitRate no results](/src/assets/readme_assets/kitrate_notfound.png)
+
+## Profile page
+* A future feature will be a profile page to view a user's data
+* In the meantime, there is a holding page stating the page isn't ready yet
+
+![KitRate profile page](/src/assets/readme_assets/kitrate_profile.png)
 
 ## Features to add in the future
-The profile page functionality is the next piece of work for this site. It would be great to be able to see a User’s profile and some statistics about their interaction with the page such as, how many reviews they’ve left. There are User Stories for this in the project board and it just needs to be planned into the next iteration. 
+The profile page functionality is the next piece of work for this site. It would be great to be able to see a User’s profile and some statistics about their interaction with the page such as, how many reviews they’ve left. There are User Stories for this in the project board and it needs to be planned into the next iteration. 
 
 # Component usage
 The React framework allows components to be created in a generic way so they can be reused across the project/projects. KitRate has several of these reusable components:
@@ -403,54 +506,54 @@ There is one breakpoint where the popular categories move to the side of the pag
 
 ### Validator Testing 
 Validation testing using W3C Mark-Up Validation Service: HTML for:
-index.html - no errors
+* index.html - no errors
 Validate JavaScript (https://validatejavascript.com/) validation service for:
-axiosDefaults.js - no errors
-Asset.js - no errors
-Avatar.js - no errors
-DisplayAvgRating.js - avg_rating not in camel case, refers to API fields and therefore must stay as is.
-DisplayRating.js - no errors
-MoreDropdown.js - error relating to onClick event must have a listener. Not a problem as this will be set up when using the component.
-NavBar.js - profile_image and profile_id not in camel case, refers to API fields and therefore must stay as is.
-NotFound.js - no errors
-CategoryDataContext.js - category declared in upperscope - non issue
-CurrentUserContext.js - ‘Promise’ not defined - non-issue, not a variable
-useClickOutsideToggle.js = ‘document’ not defined - non-issue, not a variable
-useRedirect.js - no errors
-SignInform.js - signinup_hero not in camelcase - image reference only
-SignUpForm.js - signinup_hero not in camelcase - image reference only
-Categories.js - subscribe_id not in camel case, refers to API field and therefore must stay as is.
-CategoryPage.js - pageCategory, categoryProducts, subscriptions, declared in upperscope - non issue. product_count, subscriptions_count, subscribe_id not in camel case, refers to API fields and therefore must stay as is.
-PopularCategories.js - no errors
-Product.js - API fields not in camelcase - non-issue. Nested ternary expressions - these are needed. onClick event must have a listener. Not a problem as this will be set up when using the component.
-ProductCreateForm.js - URL and FormData not defined - non-issue, not a variable
-ProductEditForm.js - API fields not in camelcase - non-issue.
-ProductPage.js - API fields not in camelcase - non-issue. Nested ternary expressions - these are needed. ‘Promise’ not defined - non-issue, not a variable.
-ProductsPage.js - various not defined - non-issue, not a variable
-Profile.js - API fields not in camelcase - non-issue.
-ProfilePage.js - no errors
-Review.js - API fields not in camelcase - non-issue.
-ReviewCreateForm.js - API fields not in camelcase - non-issue.
-ReviewEditForm.js - API fields not in camelcase - non-issue.
-utils.js - various not defined - non-issue, not a variable
-App.js - profile_id not in camel case, refers to API fields and therefore must stay as is.
-Index.js - “document” not defined - non-issue, not a variable
+* axiosDefaults.js - no errors
+* Asset.js - no errors
+* Avatar.js - no errors
+* DisplayAvgRating.js - avg_rating not in camel case, refers to API fields and therefore must stay as is.
+* DisplayRating.js - no errors
+* MoreDropdown.js - error relating to onClick event must have a listener. Not a problem as this will be set up when using the component.
+* NavBar.js - profile_image and profile_id not in camel case, refers to API fields and therefore must stay as is.
+* NotFound.js - no errors
+* CategoryDataContext.js - category declared in upperscope - non issue
+* CurrentUserContext.js - ‘Promise’ not defined - non-issue, not a variable
+* useClickOutsideToggle.js = ‘document’ not defined - non-issue, not a variable
+* useRedirect.js - no errors
+* SignInform.js - signinup_hero not in camelcase - image reference only
+* SignUpForm.js - signinup_hero not in camelcase - image reference only
+* Categories.js - subscribe_id not in camel case, refers to API field and therefore must stay as is.
+* CategoryPage.js - pageCategory, categoryProducts, subscriptions, declared in upperscope - non issue. product_count, subscriptions_count, subscribe_id not in camel case, refers to API fields and therefore must stay as is.
+* PopularCategories.js - no errors
+* Product.js - API fields not in camelcase - non-issue. Nested ternary expressions - these are needed. onClick event must have a listener. Not a problem as this will be set up when using the component.
+* ProductCreateForm.js - URL and FormData not defined - non-issue, not a variable
+* ProductEditForm.js - API fields not in camelcase - non-issue.
+* ProductPage.js - API fields not in camelcase - non-issue. Nested ternary expressions - these are needed. ‘Promise’ not defined - non-issue, not a variable.
+* ProductsPage.js - various not defined - non-issue, not a variable
+* Profile.js - API fields not in camelcase - non-issue.
+* ProfilePage.js - no errors
+* Review.js - API fields not in camelcase - non-issue.
+* ReviewCreateForm.js - API fields not in camelcase - non-issue.
+* ReviewEditForm.js - API fields not in camelcase - non-issue.
+* utils.js - various not defined - non-issue, not a variable
+* App.js - profile_id not in camel case, refers to API fields and therefore must stay as is.
+* Index.js - “document” not defined - non-issue, not a variable
 CSS for:
-App.css - no errors
-App.module.css - no errors
-index.css - no errors
-Asset.module.css - no errors
-Avatar.module.css - no errors
-Button.module.css - no errors
-MoreDropdown.module.css - no errors
-NavBar.module.css - no errors
-NotFound.module.css - no errors
-Product.module.css - no errors
-ProductCreateEditForm.module.css - no errors
-Profile.module.css - no errors
-ReviewForm.module.css - no errors
-Reviews.module.css - no errors
-SignForm.module.css - no errors
+* App.css - no errors
+* App.module.css - no errors
+* index.css - no errors
+* Asset.module.css - no errors
+* Avatar.module.css - no errors
+* Button.module.css - no errors
+* MoreDropdown.module.css - no errors
+* NavBar.module.css - no errors
+* NotFound.module.css - no errors
+* Product.module.css - no errors
+* ProductCreateEditForm.module.css - no errors
+* Profile.module.css - no errors
+* ReviewForm.module.css - no errors
+* Reviews.module.css - no errors
+* SignForm.module.css - no errors
 
 # Bugs
 
