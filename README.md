@@ -1,7 +1,7 @@
 # KitRate
 Kit Rate is a website for activity enthusiasts who want to research kit (products) before they buy. This site is building a community of active product testers who can provide the viewer an insight into a product with reviews and ratings which can help inform a buying decision. The initial release of this site is focused around Mountain Biking kit but it has been designed to be scalable to other sports and activities in the future. 
 
-![KitRate site display - Desktop](/static/readme_files/kitrate_display.png)
+![KitRate site display - Desktop](/src/assets/readme_assets/kitrate_display.png)
 
 
 ## Links:
