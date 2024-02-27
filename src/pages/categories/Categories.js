@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../styles/Profile.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
@@ -25,7 +24,7 @@ const Category = (props) => {
         {!mobile && currentUser &&
           (subscribe_id ? (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline} ${styles.Subscribe} d-flex justify-content-around`}
+              className={`${btnStyles.Button} ${btnStyles.BlackOutline} d-flex justify-content-around`}
               onClick={() => handleUnsubscribe(category, currentUser)}
             >
               unsubscribe
