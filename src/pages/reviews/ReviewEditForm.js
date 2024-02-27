@@ -58,6 +58,7 @@ function ReviewEditForm(props) {
           name="rating"
           onChange={handleRatingChange}
           className="rounded ml-2"
+          required
         >
           <option value="">Select new rating</option>
           <option key="1" value="1">One</option>
@@ -72,6 +73,7 @@ function ReviewEditForm(props) {
           className={styles.Form}
           as="textarea"
           value={formContent}
+          required
           onChange={handleChange}
           rows={2}
         />

@@ -4,6 +4,7 @@ import { useCurrentUser } from "./CurrentUserContext";
 import { subscribeHelper, unsubscribeHelper} from "../utils/utils";
 
 
+
 // creates context objects
 const CategoryDataContext = createContext();
 const SetCategoryDataContext = createContext();
@@ -41,24 +42,17 @@ export const CategoryDataProvider = ({ children }) => {
                         subscribeHelper(category, data.id)),
                 },
             }));
+
         } catch (err) {
             console.log(err)
         };
     };
 
     const handleUnsubscribe = async (category, subscriptions) => {
-        console.log("category: " + category.id)
-        // console.log(subscriptions.results)
-        
-        // const {sub} = subscriptions.results
-        // console.log({sub})
-            
-        // // need function to take subscriptions and check for category.id and return subscription.id
-
-        // const sub_id = subscriptions?.results?.find((value) => value.category === category)
+        const cat = categoryData?.popularCategories?.results?.find((v)=> v.category === category) 
             
         try {
-            await axiosRes.delete(`/subscriptions/${category.id}/`)
+            await axiosRes.delete(`/subscriptions/${cat.id}/`)
 
             setCategoryData((prevState) => ({
                 ...prevState,
@@ -72,7 +66,6 @@ export const CategoryDataProvider = ({ children }) => {
                         unsubscribeHelper(category, subscriptions.id)),
                 },
             }));
-
 
         } catch (err) {
             console.log(err)
