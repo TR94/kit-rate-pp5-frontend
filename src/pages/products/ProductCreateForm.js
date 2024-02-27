@@ -261,6 +261,7 @@ function ProductCreateForm() {
                 accept="image/*" 
                 onChange={handleChangeImage} 
                 ref={imageInput}
+                required
               />
 
             </Form.Group>

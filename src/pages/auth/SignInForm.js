@@ -77,6 +77,7 @@ function SignInForm() {
                 name='username'
                 value={username}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
 
@@ -98,7 +99,7 @@ function SignInForm() {
               />
             </Form.Group>
 
-            {errors.password1?.map((message, idx) => (
+            {errors.password?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>

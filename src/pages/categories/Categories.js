@@ -29,14 +29,14 @@ const Category = (props) => {
         {!mobile && currentUser &&
           (subscribe_id ? (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+              className={`${btnStyles.Button} ${btnStyles.BlackOutline} d-flex justify-content-around`}
               onClick={() => {}}
             >
               unsubscribe
             </Button>
           ) : (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Black}`}
+              className={`${btnStyles.Button} ${btnStyles.Black} d-flex justify-content-around`}
               onClick={() => handleSubscribe(category, currentUser)}
             >
               subscribe
