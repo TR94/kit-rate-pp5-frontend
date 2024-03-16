@@ -125,7 +125,7 @@ function ProductCreateForm() {
           name="category" 
           onChange={handleChange} 
           className="rounded"
-          required
+        
         >
 
           <option value="">Select a category</option>
@@ -274,7 +274,7 @@ function ProductCreateForm() {
         </Col>
       </Row>
       <Row>
-        <Col className="d-none d-md-block p-0 p-md-2">
+        <Col className="d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields2}</Container>
         </Col>
       </Row>
