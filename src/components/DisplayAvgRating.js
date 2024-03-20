@@ -11,8 +11,8 @@ export function DisplayAvgRating({avg_rating=0}) {
   return (
     <div className='App'>
         
-      {[...Array(handleRound(avg_rating))].map(() => {
-        return <FaStar size={30} />
+      {[...Array(handleRound(avg_rating))].map((value, index) => {
+        return <FaStar key={index} size={30} />
       })}
     </div>
   );

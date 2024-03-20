@@ -62,8 +62,9 @@ function ReviewCreateForm(props) {
                         value={rating}
                         onChange={handleRatingChange}
                         className="rounded ml-2"
+                        required
                     >
-                      <option>Rate this product</option>
+                      <option value="" disabled selected>Rate this product</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
                       <option value="3">Three</option>
@@ -79,6 +80,7 @@ function ReviewCreateForm(props) {
                 value={content}
                 onChange={handleContentChange}
                 rows={2}
+                required
             />
         </Form.Group>
      

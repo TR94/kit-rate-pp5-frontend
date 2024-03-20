@@ -5,8 +5,8 @@ export function DisplayRating({rating=0}) {
   return (
     <div className='App'>
         
-      {[...Array(rating)].map(() => {
-        return <FaStar size={18} />
+      {[...Array(rating)].map((value, index) => {
+        return <FaStar key={index} size={18} />
       })}
     </div>
   );

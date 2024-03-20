@@ -54,13 +54,13 @@ function ReviewEditForm(props) {
       <Form.Group>
         <Form.Label>Rating: </Form.Label>
         <select
-        aria-label="Select a new product rating"
+          aria-label="Select a new product rating"
           name="rating"
           onChange={handleRatingChange}
           className="rounded ml-2"
           required
         >
-          <option value="">Select new rating</option>
+          <option value="" disabled selected>Select new rating</option>
           <option key="1" value="1">One</option>
           <option key="2" value="2">Two</option>
           <option key="3" value="3">Three</option>

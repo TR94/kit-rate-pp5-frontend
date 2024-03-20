@@ -19,30 +19,26 @@ const PopularCategories = ({mobile}) => {
           {mobile ? (
             <div className="d-flex justify-content-center">
                 {popularCategories.results.slice(0,3).map((category) => (
-                  <>
+                  <React.Fragment key={category.id}>
                     <Col xs={4} className="pl-0">
                       <Link className="d-flex justify-content-center" to={`/categories/${category.id}`}>
                         <i className="fa-solid fa-person-biking"></i>
                       </Link>
-                      <Link className="d-flex justify-content-center" to={`/categories/${category.id}`}>
-                        <Category {...category} key={category.id} />
-                      </Link>
+                        <Category {...category}/>
                     </Col>
-                </>
+                </React.Fragment>
                 ))}
             </div>
           ):(
             popularCategories.results.map((category) => (
-                <Row>
+                <Row key={category.id}>
                   <Col xs={3} className="pl-4 pt-4">
                     <Link to={`/categories/${category.id}`}>
                       <i className="fa-solid fa-person-biking"></i>
                     </Link>
                   </Col>
                   <Col xs={9}>
-                    <Link to={`/categories/${category.id}`}>
-                      <span><Category {...category} key={category.id} /></span>
-                    </Link>
+                      <span><Category {...category} /></span>
                   </Col>
                 </Row>
             ))
