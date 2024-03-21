@@ -425,16 +425,6 @@ The logo and text:
 ## Features to add in the future
 The profile page functionality is the next piece of work for this site. It would be great to be able to see a User’s profile and some statistics about their interaction with the page such as, how many reviews they’ve left. There are User Stories for this in the project board and it needs to be planned into the next iteration. 
 
-# Component usage
-The React framework allows components to be created in a generic way so they can be reused across the project/projects. KitRate has several of these reusable components:
-* axiosDefaults: used to handle requests and responses to and from the API
-* Asset: used to handle on-screen loading symbol, image and messages to the user
-* PopularCategories: conditionally renders mobile or desktop format and displays categories in order of popularity. Used on the home, feed, favourites, category and product pages. 
-* MoreDropdown: gives access to editing functionality based on ownership and logged in user. Used for reviews and products. 
-* Review: template for displaying review content and rating. Mapped over to display the data as many times as required. 
-* Product: template for displaying product data such as image, title, description, etc. Mapped over to display the data as many times as required. 
-* Contexts: sets “globally” accessible data such as the logged in user (CurrentUserContext) and relevant category (CategoryDataContext) to be used as props in other pages. 
-
 # Technologies Used
 Coding languages used:
 * HTML5
@@ -445,7 +435,19 @@ Frameworks:
 * React Bootstrap
 * Django REST  
 * Psycopg2
-vReact 
+* React
+
+# React component usage
+The React framework allows components to be created in a generic way so they can be reused across the project/projects. KitRate has several of these reusable components:
+* axiosDefaults: used to handle requests and responses to and from the API
+* Asset: used to handle on-screen loading symbol, image and messages to the user
+* PopularCategories: conditionally renders mobile or desktop format and displays categories in order of popularity. Used on the home, feed, favourites, category and product pages. 
+* MoreDropdown: gives access to editing functionality based on ownership and logged in user. Used for reviews and products. 
+* Review: template for displaying review content and rating. Mapped over to display the data as many times as required. 
+* Product: template for displaying product data such as image, title, description, etc. Mapped over to display the data as many times as required. 
+* Contexts: sets “globally” accessible data such as the logged in user (CurrentUserContext) and relevant category (CategoryDataContext) to be used as props in other pages.
+
+The React framework also improves user experience with by constructing a page using independent blocks (components). These have the ability to refresh and update on the screen independently rather than forcing an entire page to refresh with all it's API requests. The responsive and delay free interactibe nature of these componets improves the user experience. 
 
 # Libraries used
 A variety of npm libraries have been used to enable functionality:
