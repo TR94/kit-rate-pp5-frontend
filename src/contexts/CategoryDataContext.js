@@ -39,13 +39,13 @@ export const CategoryDataProvider = ({ children }) => {
         ...prevState,
         pageCategory: {
           results: prevState.pageCategory.results.map(
-            (category) => subscribeHelper(category, data.id),
+            (category) => subscribeHelper(category, cat.id, data.id),
           ),
         },
         popularCategories: {
           ...prevState.popularCategories,
           results: prevState.popularCategories.results.map(
-            (category) => subscribeHelper(category, data.id),
+            (category) => subscribeHelper(category, cat.id, data.id),
           ),
         },
       }));
@@ -54,7 +54,7 @@ export const CategoryDataProvider = ({ children }) => {
     }
   };
 
-  const handleUnsubscribe = async (category, subscriptions) => {
+  const handleUnsubscribe = async (category) => {
     const cat = categoryData?.popularCategories?.results?.find(
             (v) => v.category === category);
 
@@ -65,12 +65,12 @@ export const CategoryDataProvider = ({ children }) => {
         ...prevState,
         pageCategory: {
           results: prevState.pageCategory.results.map(
-            (category) => unsubscribeHelper(category, subscriptions.id)),
+            (category) => unsubscribeHelper(category, cat.id,)),
         },
         popularCategories: {
           ...prevState.popularCategories,
           results: prevState.popularCategories.results.map(
-            (category) => unsubscribeHelper(category, subscriptions.id)),
+            (category) => unsubscribeHelper(category, cat.id)),
         },
       }));
     } catch (err) {

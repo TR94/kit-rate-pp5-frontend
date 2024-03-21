@@ -58,13 +58,14 @@ function ReviewCreateForm(props) {
                 <Form.Group>
                     <Form.Label>Rating: </Form.Label>
                     <select
-                        name="rating"
-                        value={rating}
-                        onChange={handleRatingChange}
-                        className="rounded ml-2"
-                        required
+                      aria-label="Choose your rating for this product"
+                      name="rating"
+                      value={rating}
+                      onChange={handleRatingChange}
+                      className="rounded ml-2"
+                      required
                     >
-                      <option value="" disabled selected>Rate this product</option>
+                      <option value="" disabled default>Rate this product</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
                       <option value="3">Three</option>

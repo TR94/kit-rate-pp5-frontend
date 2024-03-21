@@ -21,16 +21,16 @@ export const fetchMoreData = async (resource, setResource) => {
 };  
 
 
-export const subscribeHelper = (category) => {
-    return category.id ?   
-        {...category, subscriptions_count: category.subscriptions_count + 1}
+export const subscribeHelper = (category, clickedCategory, subscribe_id) => {
+    return category.id === clickedCategory ?   
+        {...category, subscriptions_count: category.subscriptions_count + 1, subscribe_id}
         :
         category;
 }
 
-export const unsubscribeHelper = (category) => {
-    return category.id ?   
-    {...category, subscriptions_count: category.subscriptions_count - 1}
+export const unsubscribeHelper = (category, clickedCategory) => {
+    return category.id === clickedCategory ?   
+    {...category, subscriptions_count: category.subscriptions_count - 1, subscribe_id: null}
     :
     category;
 }
