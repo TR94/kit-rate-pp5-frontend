@@ -1,4 +1,3 @@
-import React from "react";
 import { 
   createContext, 
   useContext, 
@@ -22,7 +21,7 @@ export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 // Reusable custom hook to check current user when a component mounts
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const history = useHistory()
+  const history = useHistory();
 
   const handleMount = async () => {
     try {
@@ -47,11 +46,11 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                history.push("/signin")
+                history.push("/signin");
               }
               return null;
             });
-            removeTokenTimestamp()
+            removeTokenTimestamp();
             return config;
           }
         }

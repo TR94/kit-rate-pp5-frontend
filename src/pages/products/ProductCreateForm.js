@@ -126,10 +126,11 @@ function ProductCreateForm() {
           onChange={handleChange} 
           className="rounded"
           required
+          defaultValue={'select'}
         
         >
 
-          <option value="" disabled selected>Select a category</option>
+          <option value="select" disabled>Select a category</option>
           {currentCategories?.results?.map((selection) => {
             const {id, category} = selection;
             return (
