@@ -26,7 +26,7 @@ const PopularCategories = ({mobile}) => {
                       </Link>
                         <Category {...category}/>
                     </Col>
-                </React.Fragment>
+                  </React.Fragment>
                 ))}
             </div>
           ):(

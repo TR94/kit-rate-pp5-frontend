@@ -28,7 +28,7 @@ export const CategoryDataProvider = ({ children }) => {
 
   const handleSubscribe = async (category, owner) => {
     const cat = categoryData?.popularCategories?.results?.find(
-            (v) => v.category === category);
+      (v) => v.category === category);
     try {
       const { data } = await axiosRes.post('/subscriptions/', {
         owner: owner.username,

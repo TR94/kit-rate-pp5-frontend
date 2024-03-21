@@ -14,7 +14,7 @@ import NoResults from "../../assets/no-results.png";
 import PopularCategories from "./PopularCategories.js";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults.js";
-import { useCategoryData, useSetCategoryData } from "../../contexts/CategoryDataContext.js";
+import { useCategoryData, useSetCategoryData } from "../../contexts/CategoryDataContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom.js";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Product from "../products/Product.js";
@@ -79,14 +79,14 @@ function CategoryPage() {
         {currentUser && (category?.subscribe_id ? (
           <Button
           className={`${btnStyles.Button} ${btnStyles.Black}`}
-          onClick={() => handleUnsubscribe(category, currentUser)}
+          onClick={() => handleUnsubscribe(category.category, currentUser)}
           >
             Unsubscribe
           </Button>
         ) : (
           <Button
             className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-            onClick={() => handleSubscribe(category, currentUser)}
+            onClick={() => handleSubscribe(category.category, currentUser)}
           >
             Subscribe
           </Button>
