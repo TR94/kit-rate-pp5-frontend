@@ -190,7 +190,7 @@ function ProductCreateForm() {
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
-            ))}
+      ))}
     </div>
   )
 

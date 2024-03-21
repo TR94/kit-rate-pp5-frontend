@@ -60,7 +60,7 @@ function ProductPage() {
 
           {reviews.results.length ? (
             <InfiniteScroll
-              children={reviews.results.map(review => (
+              children={reviews.results.map((review) => (
                 <Review 
                   key={review.id} 
                   {...review}
